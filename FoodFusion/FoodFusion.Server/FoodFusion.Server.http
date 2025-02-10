@@ -1,0 +1,6 @@
+@FoodFusion.Server_HostAddress = http://localhost:5259
+
+GET {{FoodFusion.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
