@@ -16,6 +16,5 @@ namespace FoodFusion.Server.Entities
         public DateTime OrderDate { get; set; }
         public ICollection<OrderItem> OrderItem { get; set; } = new List<OrderItem>();
         public Payment Payment { get; set; }  = new Payment();
-
     }
 }
