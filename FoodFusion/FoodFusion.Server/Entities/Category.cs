@@ -9,6 +9,7 @@ namespace FoodFusion.Server.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
         public long CategoryID { get; set; }
+        [StringLength(50)]
         [Required(ErrorMessage = "Category name is required")]
         public string Name { get; set; } = string.Empty;
         public Cuisine? Cuisine { get; set; }

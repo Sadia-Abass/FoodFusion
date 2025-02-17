@@ -10,6 +10,7 @@ namespace FoodFusion.Server.Entities
         [Required]
         public long CuisineID { get; set; }
         [Required(ErrorMessage = "Cuisine type is required")]
+        [StringLength(50)]
         public string Type { get; set; } = string.Empty;
         public List<Category> Categories { get; set; } = new List<Category>();
         public DateTime CreatedDate { get; set; }

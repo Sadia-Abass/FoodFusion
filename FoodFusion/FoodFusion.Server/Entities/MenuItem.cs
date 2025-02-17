@@ -1,6 +1,6 @@
 ﻿namespace FoodFusion.Server.Entities
 {
-    public class MenuItrem
+    public class MenuItem
     {
     }
 }
