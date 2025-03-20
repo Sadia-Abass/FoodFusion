@@ -8,6 +8,10 @@ namespace FoodFusion.Server.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long EmployeeID { get; set; }
+        [Required]
+        public string ApplicationUserId { get; set; } = string.Empty;
+        [ForeignKey(nameof(ApplicationUserId))]
+        public virtual ApplicationUser ApplicationUser { get; set; } = new ApplicationUser();
         [Required(ErrorMessage = "Name is required")]
         [StringLength(100)]
         public string Name { get; set; } = string.Empty;
@@ -30,6 +34,9 @@ namespace FoodFusion.Server.Entities
         public string PhoneNumber { get; set; } = string.Empty;
         [Required(ErrorMessage = ("Role is required"))]
         [StringLength(50)]
-        public string Role { get; set; } = string.Empty;
+        public string Department { get; set; } = string.Empty;
+        public DateTime HireDate { get; set; }
+        public DateTime LastModifiedDate { get; set; }
+        public bool IsActive { get; set; }
     }
 }
