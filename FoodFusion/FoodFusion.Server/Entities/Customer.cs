@@ -8,6 +8,10 @@ namespace FoodFusion.Server.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long CustomerID { get; set; }
+        [Required]
+        public string ApplicationUserId { get; set; } = string.Empty;
+        [ForeignKey(nameof(ApplicationUserId))]
+        public virtual ApplicationUser ApplicationUser { get; set; } = new ApplicationUser();
         [Required(ErrorMessage = "Enter name")]
         [StringLength(100)]
         public string Name { get; set; } = string.Empty;
