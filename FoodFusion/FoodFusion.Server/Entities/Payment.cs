@@ -7,17 +7,25 @@ namespace FoodFusion.Server.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Required]
         public int PaymentID { get; set; }
         [Required]
-        [Column(TypeName = ("decimal(5, 2)"))]
-        public decimal Amount { get; set; }
-        [Required(ErrorMessage = "Payment type is required")]
-        public string PaymentType { get; set; } = string.Empty;
-        public string Status { get; set; } = string.Empty;
-        public DateTime PaymentDate { get; set; }
         public long OrderID { get; set; }
-        public Order? Order { get; set; }
-
+        [ForeignKey(nameof(OrderID))]
+        public Order Order { get; set; } = new Order();
+        [Required]
+        [StringLength(50)]
+        public string PaymentMethod { get; set; } = string.Empty;
+        [StringLength(50)]
+        public string TransactionID { get; set; } = string.Empty;
+        [Required]
+        [Column(TypeName = ("decimal(18,2)"))]
+        public decimal Amount { get; set; }
+        [Required]
+        public DateTime PaymentDate { get; set; }
+        [Required]
+        [StringLength(50)]
+        public PaymentStatus Status { get; set; } = new PaymentStatus();
+        public Refund Refund { get; set; } = new Refund();
+   
     }
 }
