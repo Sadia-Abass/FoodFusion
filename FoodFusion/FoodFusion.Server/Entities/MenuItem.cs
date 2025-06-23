@@ -16,9 +16,17 @@ namespace FoodFusion.Server.Entities
         [Column(TypeName = "decimal(5, 2)")]
         public decimal Price { get; set; }
         public long SubCategoryID { get; set; }
+        [ForeignKey(nameof(SubCategoryID))]
         public SubCategory? SubCategory { get; set; }
+        public MenuItemImage? MenuItemImage { get; set; }
+        [Required]
+        public long RestaurantId { get; set; }
+        [ForeignKey(nameof(RestaurantId))]
+        public Restaurant? Restaurant { get; set; }
+        public ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>(); 
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
         public bool IsDeleted { get; set; }
+   
     }
 }

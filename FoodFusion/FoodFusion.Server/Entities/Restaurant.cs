@@ -25,8 +25,9 @@ namespace FoodFusion.Server.Entities
         public string PostCode { get; set; } = string.Empty;
         [Required(ErrorMessage = "Phone number is required")]
         public string PhoneNumber { get; set; } = string.Empty;
-        public List<MenuItem> MenuItem { get; set; } = new List<MenuItem>();
-        public List<Employee> Employee { get; set; } = new List<Employee>();
-        public List<Reservation> Reservation { get; set; } = new List<Reservation>();
+        public ICollection<Cuisine> Cuisine { get; set; } = new List<Cuisine>();
+        public ICollection<MenuItem> MenuItem { get; set; } = new List<MenuItem>();
+        public ICollection<Employee> Employee { get; set; } = new List<Employee>();
+        public ICollection<Reservation> Reservation { get; set; } = new List<Reservation>();
     }
 }

@@ -7,11 +7,14 @@ namespace FoodFusion.Server.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Required]
         public long CuisineID { get; set; }
         [Required(ErrorMessage = "Cuisine type is required")]
         [StringLength(50)]
         public string Type { get; set; } = string.Empty;
+        [Required]
+        public long RestaurantId { get; set; }
+        [ForeignKey(nameof(RestaurantId))]
+        public Restaurant Restaurant { get; set; } = new Restaurant();
         public List<Category> Categories { get; set; } = new List<Category>();
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }

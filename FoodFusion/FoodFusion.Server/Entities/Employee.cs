@@ -34,9 +34,13 @@ namespace FoodFusion.Server.Entities
         public string PhoneNumber { get; set; } = string.Empty;
         [Required(ErrorMessage = ("Role is required"))]
         [StringLength(50)]
-        public string Department { get; set; } = string.Empty;
+        public string JobRole { get; set; } = string.Empty;
+        [Required]
+        public long RestaurantId { get; set; }
+        [ForeignKey(nameof(RestaurantId))]
+        public Restaurant Restaurant { get; set; } = new Restaurant();
         public DateTime HireDate { get; set; }
-        public DateTime LastModifiedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
         public bool IsActive { get; set; }
     }
 }

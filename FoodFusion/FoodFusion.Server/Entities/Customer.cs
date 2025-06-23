@@ -33,5 +33,6 @@ namespace FoodFusion.Server.Entities
         public ICollection<Order> Orders { get; set; } = new List<Order>();
         public ICollection<Cart> Carts { get; set; } = new List<Cart>();
         public ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
+        public ICollection<Reservation> Reservation { get; set; } = new List<Reservation>();
     }
 }

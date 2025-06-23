@@ -7,14 +7,13 @@ namespace FoodFusion.Server.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Required]
         public long SubcategoryID { get; set; }
         [Required]
         [StringLength(50)]
         public string Name { get; set; } = string.Empty;
         public long CategoryID { get; set; }
         public Category? Category { get; set; }
-        public ICollection<MenuItem> MenuItems { get; set; } = new List<MenuItem>();
+        public ICollection<MenuItem>? MenuItem { get; set; } //= new List<MenuItem>();
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
         public bool IsDeleted { get; set; }

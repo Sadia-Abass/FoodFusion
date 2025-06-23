@@ -7,8 +7,10 @@ namespace FoodFusion.Server.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long ReservationID { get; set; } 
+        public long ReservationID { get; set; }
+        [Required]
         public long CustomerID { get; set; }
+        [ForeignKey(nameof(CustomerID))]
         public Customer Customer { get; set; } = new Customer();
         [Required]
         public string CustomerName { get; set; } = string.Empty;
@@ -22,5 +24,11 @@ namespace FoodFusion.Server.Entities
         public int NumberOfPeople { get; set; }
         [StringLength(255)]
         public string SpecialRequests { get; set; } = string.Empty;
+        public long RestaurantId { get; set; }
+        [ForeignKey(nameof(RestaurantId))]
+        public Restaurant? Restaurant { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime ModifiedDate { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

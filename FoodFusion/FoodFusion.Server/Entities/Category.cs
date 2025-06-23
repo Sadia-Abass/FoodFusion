@@ -12,8 +12,11 @@ namespace FoodFusion.Server.Entities
         [StringLength(50)]
         [Required(ErrorMessage = "Category name is required")]
         public string Name { get; set; } = string.Empty;
+        [Required]
+        public long CuisineId { get; set; }
+        [ForeignKey(nameof(CategoryID))]
         public Cuisine? Cuisine { get; set; }
-        public ICollection<SubCategory> SubCategories { get; set; } = new List<SubCategory>();
+        public ICollection<SubCategory>? Subcategory { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
         public bool IsDeleted { get; set; }

@@ -14,7 +14,6 @@ namespace FoodFusion.Server.Entities
         public DateTime CreatedDate { get; set; }
         [Required]
         public DateTime LastUpdatedDate { get; set; }
-
         public ICollection<CartItem>? CartItems { get; set; }
     }
 }
