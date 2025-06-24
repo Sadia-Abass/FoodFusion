@@ -19,13 +19,16 @@ namespace FoodFusion.Server.Entities
         public string AddressLineTwo { get; set; } = string.Empty;
         [Required(ErrorMessage = "Town is required")]
         [StringLength(100)]
-        public string Town { get; set; } = string.Empty;
+        public string City { get; set; } = string.Empty;
         [Required(ErrorMessage = "Post code is required")]
         [StringLength(12)]
         public string PostCode { get; set; } = string.Empty;
         [Required(ErrorMessage = "Phone number is required")]
         public string PhoneNumber { get; set; } = string.Empty;
-        public ICollection<Cuisine> Cuisine { get; set; } = new List<Cuisine>();
+        [Required]
+        public long CuisineId { get; set; }
+        [ForeignKey(nameof(CuisineId))]
+        public Cuisine Cuisine { get; set; } = new Cuisine();
         public ICollection<MenuItem> MenuItem { get; set; } = new List<MenuItem>();
         public ICollection<Employee> Employee { get; set; } = new List<Employee>();
         public ICollection<Reservation> Reservation { get; set; } = new List<Reservation>();
