@@ -210,9 +210,11 @@ namespace FoodFusion.Server.Data
 
             // Configure one-to-many relationship for Restaurant with Cuisine
             builder.Entity<Restaurant>()
-                .HasMany(r => r.Cuisine)
-                .WithOne(c => c.Restaurant)
-                .HasForeignKey(r => r.RestaurantId);
+                .HasOne(r => r.Cuisine)
+                .WithMany(c => c.Restaurant)
+                .HasForeignKey(r => r.CuisineId);
+
+            builder.Seed();
         }
     }
 }
