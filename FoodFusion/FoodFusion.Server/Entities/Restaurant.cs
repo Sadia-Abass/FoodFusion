@@ -7,17 +7,16 @@ namespace FoodFusion.Server.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long RestaurantID { get; set; }
+        public long RestaurantId { get; set; }
         [Required(ErrorMessage = "Restaurant name is required")]
         [StringLength(50)]
         public string Name { get; set; } = string.Empty;
         [Required(ErrorMessage = "Address Line 1 is required")]
         [StringLength(150)]
         public string AddressLineOne { get; set; } = string.Empty;
-        [Required(ErrorMessage = "Address Line 2 is required")]
         [StringLength(150)]
         public string AddressLineTwo { get; set; } = string.Empty;
-        [Required(ErrorMessage = "Town is required")]
+        [Required(ErrorMessage = "City is required")]
         [StringLength(100)]
         public string City { get; set; } = string.Empty;
         [Required(ErrorMessage = "Post code is required")]
@@ -25,12 +24,19 @@ namespace FoodFusion.Server.Entities
         public string PostCode { get; set; } = string.Empty;
         [Required(ErrorMessage = "Phone number is required")]
         public string PhoneNumber { get; set; } = string.Empty;
-        [Required]
-        public long CuisineId { get; set; }
-        [ForeignKey(nameof(CuisineId))]
-        public Cuisine Cuisine { get; set; } = new Cuisine();
+        [Required(ErrorMessage = "Number of Day of week open is required.")]
+        public int DaysOfWeek { get; set; }
+        [Required(ErrorMessage = "Opening time is required")]
+        public TimeSpan OpeningTime {  get; set; }
+        [Required(ErrorMessage = "Closing time is required")]
+        public TimeSpan ClosingTime { get; set; }
+        public ICollection<Cuisine> Cuisine { get; set; } = new List<Cuisine>();
         public ICollection<MenuItem> MenuItem { get; set; } = new List<MenuItem>();
         public ICollection<Employee> Employee { get; set; } = new List<Employee>();
         public ICollection<Reservation> Reservation { get; set; } = new List<Reservation>();
+        public ICollection<Feedback> Feedback { get; set; } = new List<Feedback>();
+        public DateTime CreatedDate { get; set; }
+        public DateTime LastUpdatedDate { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

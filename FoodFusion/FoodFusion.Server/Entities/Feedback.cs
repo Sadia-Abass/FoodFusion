@@ -11,9 +11,9 @@ namespace FoodFusion.Server.Entities
         [ForeignKey(nameof(CustomerId))]
         public Customer Customer { get; set; } = new Customer();
         [Required]
-        public long MenuItemId { get; set; }
-        [ForeignKey(nameof(MenuItemId))]
-        public MenuItem MenuItem { get; set; } = new MenuItem();
+        public long RestaurantId { get; set; }
+        [ForeignKey(nameof(RestaurantId))]
+        public Restaurant Restaurant { get; set; } = new Restaurant();
         [Required]
         [Range(1, 5, ErrorMessage = "Rating must be between 1 and 5")]
         public int Rating { get; set; }

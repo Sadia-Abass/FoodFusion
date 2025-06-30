@@ -12,7 +12,7 @@ namespace FoodFusion.Server.Entities
         [StringLength(50)]
         public string Type { get; set; } = string.Empty;  
         public ICollection<Restaurant> Restaurant { get; set; } = new List<Restaurant>();
-        public ICollection<Category> Categories { get; set; } = new List<Category>();
+        public ICollection<MealCategory> MealCategory { get; set; } = new List<MealCategory>();
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public bool IsDeleted { get; set; }

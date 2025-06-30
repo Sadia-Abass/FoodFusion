@@ -3,17 +3,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FoodFusion.Server.Entities
 {
-    public class SubCategory
+    public class MealCategory
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long SubcategoryID { get; set; }
         [Required]
+        public long MealCategoryId { get; set; }
         [StringLength(50)]
+        [Required(ErrorMessage = "Category name is required")]
         public string Name { get; set; } = string.Empty;
-        public long CategoryID { get; set; }
-        public Category? Category { get; set; }
-        public ICollection<MenuItem>? MenuItem { get; set; } //= new List<MenuItem>();
+        [Required]
+        public long CuisineId { get; set; }
+        [ForeignKey(nameof(CuisineId))]
+        public Cuisine? Cuisine { get; set; }
+        public ICollection<DishType>? DishType { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
         public bool IsDeleted { get; set; }
