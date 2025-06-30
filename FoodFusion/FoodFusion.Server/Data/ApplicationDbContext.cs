@@ -158,37 +158,43 @@ namespace FoodFusion.Server.Data
             builder.Entity<Order>()
                 .HasOne(o => o.BillingAddress)
                 .WithMany()
-                .HasForeignKey(o => o.BillingAddressID);
+                .HasForeignKey(o => o.BillingAddressID)
+                .OnDelete(DeleteBehavior.Restrict);
 
             // Configure one-to-many relationship for Order with ShippingAddress 
             builder.Entity<Order>()
                 .HasOne(o => o.ShippingAddress)
                 .WithMany()
-                .HasForeignKey(o =>o.ShippingAddressID);
+                .HasForeignKey(o =>o.ShippingAddressID)
+                .OnDelete(DeleteBehavior.Restrict); 
 
             // Configure one-to-many relationship for Order with Cancellation
             builder.Entity<Order>()
                 .HasOne(o => o.Cancellation)
                 .WithOne(c => c.Order)
-                .HasForeignKey<Cancellation>(c => c.OrderId);
+                .HasForeignKey<Cancellation>(c => c.OrderId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             // Configure many-to-one relationship for Payment with Refund
             builder.Entity<Payment>()
                 .HasOne(p => p.Refund)
                 .WithOne(r => r.Payment)
-                .HasForeignKey<Refund>(r => r.PaymentId);
+                .HasForeignKey<Refund>(r => r.PaymentId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             // Configure many-to-one relationship for Feedback with Customer
             builder.Entity<Feedback>()
                 .HasOne(f => f.Customer)
                 .WithMany(c => c.Feedbacks)
-                .HasForeignKey(c => c.CustomerId);
+                .HasForeignKey(c => c.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             // Configure many-to-one relationship for Feedback with MenuItem
             builder.Entity<Feedback>()
                 .HasOne(f => f.Restaurant)
                 .WithMany(p => p.Feedback)
-                .HasForeignKey(f => f.RestaurantId);
+                .HasForeignKey(f => f.RestaurantId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             // Configure one-to-many relationship for Restaurant with Employee
             builder.Entity<Restaurant>()

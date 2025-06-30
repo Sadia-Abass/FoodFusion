@@ -7,7 +7,7 @@ namespace FoodFusion.Server.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PaymentID { get; set; }
+        public long PaymentID { get; set; }
         [Required]
         public long OrderID { get; set; }
         [ForeignKey(nameof(OrderID))]
