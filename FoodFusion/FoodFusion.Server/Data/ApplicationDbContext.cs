@@ -17,7 +17,7 @@ namespace FoodFusion.Server.Data
         public DbSet<Cancellation> Cancellation { get; set; }
         public DbSet<Cart> Cart { get; set; }
         public DbSet<CartItem> CartItem { get; set; }
-        public DbSet<MealCategory> MealCategory { get; set; }
+        public DbSet<MealType> MealCategory { get; set; }
         public DbSet<Cuisine> Cuisine { get; set; }
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Employee> Employee { get; set; }   
@@ -130,17 +130,23 @@ namespace FoodFusion.Server.Data
                 .WithOne(i => i.MenuItemImage)
                 .HasForeignKey<MenuItem>(i => i.MenuItemID);
 
-            // Configure one-to-many relationship for Cuisine with Category
+            // Configure one-to-one relationship for MenuItem with MenuItemImage
             builder.Entity<Cuisine>()
-                .HasMany(c => c.MealCategory)
+                .HasMany(m => m.MenuItem)
                 .WithOne(c => c.Cuisine)
-                .HasForeignKey(c => c.MealCategoryId);
+                .HasForeignKey(i => i.CuisineId);
+
+            // Configure one-to-many relationship for Cuisine with Category
+            //builder.Entity<Cuisine>()
+            //    .HasMany(c => c.MealType)
+            //    .WithOne(c => c.Cuisine)
+            //    .HasForeignKey(c => c.MealTypeId);
 
             // Configure one-to-many relationship for Category with Subcategory
-            builder.Entity<MealCategory>()
-                .HasMany(c => c.DishType)
-                .WithOne(s => s.MealCategory)
-                .HasForeignKey(s => s.MealCategoryId);
+            //builder.Entity<MealType>()
+            //    .HasMany(c => c.DishType)
+            //    .WithOne(s => s.MealType)
+            //    .HasForeignKey(s => s.MealTypeId);
 
             // Configure one-to-many relationship for Subcategory with MenuItem
             builder.Entity<DishType>()

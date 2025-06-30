@@ -20,43 +20,33 @@ namespace FoodFusion.Server.Data
                 new Cuisine { CuisineID = 10, Type = "Japanese", CreatedDate = DateTime.UtcNow, IsDeleted = false }
                 );
 
-            modelBuilder.Entity<MealCategory>().HasData(
-                new MealCategory { MealCategoryId = 1, Name = "Appertizer", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new MealCategory { MealCategoryId = 2, Name = "Bakery", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new MealCategory { MealCategoryId = 3, Name = "Main", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new MealCategory { MealCategoryId = 4, Name = "Desserts", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new MealCategory { MealCategoryId = 5, Name = "Drinks", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new MealCategory { MealCategoryId = 6, Name = "Lunch", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new MealCategory { MealCategoryId = 7, Name = "Sides", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new MealCategory { MealCategoryId = 8, Name = "Starters", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new MealCategory { MealCategoryId = 9, Name = "Sauces", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new MealCategory { MealCategoryId = 10, Name = "Extras", CreatedDate = DateTime.UtcNow, IsDeleted = false }
+            modelBuilder.Entity<MealType>().HasData(
+                new MealType { MealTypeId = 1, Name = "Beakfast", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new MealType { MealTypeId = 2, Name = "Lunch", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new MealType { MealTypeId = 3, Name = "Dinner", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new MealType { MealTypeId = 4, Name = "All Day", CreatedDate = DateTime.UtcNow, IsDeleted = false }
                 );
 
             modelBuilder.Entity<DishType>().HasData(
-                new DishType { DishTypeId = 1, Name = "Curry", MealCategoryId = 3, CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new DishType { DishTypeId = 2, Name = "Pasta", MealCategoryId = 3, CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new DishType { DishTypeId = 3, Name = "Cakes", MealCategoryId = 4, CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new DishType { DishTypeId = 4, Name = "Rice", MealCategoryId = 7, CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new DishType { DishTypeId = 5, Name = "Soups", MealCategoryId = 8, CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new DishType { DishTypeId = 6, Name = "Chicken", MealCategoryId = 3, CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new DishType { DishTypeId = 7, Name = "Bread", MealCategoryId = 2, CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new DishType { DishTypeId = 8, Name = "Coffee", MealCategoryId = 5, CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new DishType { DishTypeId = 9, Name = "Tea", MealCategoryId = 5, CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new DishType { DishTypeId = 10, Name = "Kebab", MealCategoryId = 3, CreatedDate = DateTime.UtcNow, IsDeleted = false }
+                new DishType { DishTypeId = 1, Name = "Curry", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType { DishTypeId = 2, Name = "Pasta", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType { DishTypeId = 3, Name = "Cakes", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType { DishTypeId = 4, Name = "Rice", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType { DishTypeId = 5, Name = "Soups", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType { DishTypeId = 6, Name = "Chicken", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType { DishTypeId = 7, Name = "Bread"   , CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType { DishTypeId = 8, Name = "Coffee", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType { DishTypeId = 9, Name = "Tea", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType { DishTypeId = 10, Name = "Kebab", CreatedDate = DateTime.UtcNow, IsDeleted = false }
                 );
 
-            modelBuilder.Entity<Restaurant>().HasData(
-                new Restaurant { RestaurantId = 1, Name = "The Empire's Kitchen", AddressLineOne = "26 Green Street", AddressLineTwo = "", City = "London", PostCode = "N1C 6TR", PhoneNumber = "02089236945", CuisineId = 1},
-                new Restaurant { RestaurantId = 2, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" },
-                new Restaurant { RestaurantId = 3, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" },
-                new Restaurant { RestaurantId = 4, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" },
-                new Restaurant { RestaurantId = 5, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" },
-                new Restaurant { RestaurantId = 6, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" },
-                new Restaurant { RestaurantId = 7, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" },
-                new Restaurant { RestaurantId = 8, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" },
-                new Restaurant { RestaurantId = 9, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" },
-                new Restaurant { RestaurantId = 10, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" }
+            modelBuilder.Entity<MealCourse>().HasData(
+                new MealCourse { MealCourseId = 1, MealType = "Appertizers/Starters", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new MealCourse { MealCourseId = 2, MealType = "Main Course", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new MealCourse { MealCourseId = 3, MealType = "Sides", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new MealCourse { MealCourseId = 4, MealType = "Desserts", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new MealCourse { MealCourseId = 5, MealType = "Sauces", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new MealCourse { MealCourseId = 6, MealType = "Extras", CreatedDate = DateTime.UtcNow, IsDeleted = false }
                 );
 
             modelBuilder.Entity<Status>().HasData(
@@ -71,6 +61,20 @@ namespace FoodFusion.Server.Data
                 new Status { Id = 9, Name = "Rejected" },
                 new Status { Id = 10, Name = "Refunded" }
                 );
+
+
+            //modelBuilder.Entity<Restaurant>().HasData(
+            //    new Restaurant { RestaurantId = 1, Name = "The Empire's Kitchen", AddressLineOne = "26 Green Street", AddressLineTwo = "", City = "London", PostCode = "N1C 6TR", PhoneNumber = "02089236945", CuisineId = 1},
+            //    new Restaurant { RestaurantId = 2, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" },
+            //    new Restaurant { RestaurantId = 3, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" },
+            //    new Restaurant { RestaurantId = 4, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" },
+            //    new Restaurant { RestaurantId = 5, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" },
+            //    new Restaurant { RestaurantId = 6, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" },
+            //    new Restaurant { RestaurantId = 7, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" },
+            //    new Restaurant { RestaurantId = 8, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" },
+            //    new Restaurant { RestaurantId = 9, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" },
+            //    new Restaurant { RestaurantId = 10, Name = "", AddressLineOne = "", AddressLineTwo = "", City = "", PostCode = "", PhoneNumber = "" }
+            //    );
         }
     }
 }

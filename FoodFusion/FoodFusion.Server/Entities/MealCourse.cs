@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FoodFusion.Server.Entities
 {
+    // Meal course - Appetizers/Starters, Main Courses, Side Dishes, Desserts
     public class MealCourse
     {
         [Key]
@@ -10,9 +11,11 @@ namespace FoodFusion.Server.Entities
         public long MealCourseId { get; set; }
         [Required]
         [StringLength(50)]
-        public string Name { get; set; } = string.Empty;
+        public string MealType { get; set; } = string.Empty;
+        public ICollection<MenuItem> MenuItem { get; set; } = new List<MenuItem>();
         public DateTime CreatedDate { get; set; }
         public DateTime LastModifiedDate { get; set; }
         public bool IsDeleted { get; set; }
+     
     }
 }

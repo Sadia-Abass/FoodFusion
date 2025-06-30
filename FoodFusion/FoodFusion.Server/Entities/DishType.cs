@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FoodFusion.Server.Entities
 {
+    // Dish Type - Rice, Chicken, Pasta, Seafood, etc.
     public class DishType
     {
         [Key]
@@ -11,10 +12,10 @@ namespace FoodFusion.Server.Entities
         [Required]
         [StringLength(50)]
         public string Name { get; set; } = string.Empty;
-        [Required]
-        public long MealCategoryId { get; set; }
-        [ForeignKey(nameof(MealCategoryId))]
-        public MealCategory? MealCategory { get; set; }
+        //[Required]
+        //public long MealTypeId { get; set; }
+        //[ForeignKey(nameof(MealTypeId))]
+        //public MealType? MealType { get; set; }
         public ICollection<MenuItem>? MenuItem { get; set; } 
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }

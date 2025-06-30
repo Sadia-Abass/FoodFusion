@@ -50,6 +50,7 @@ namespace FoodFusion.Server.Entities
         public ICollection<Employee> Employee { get; set; } = new List<Employee>();
         public ICollection<Reservation> Reservation { get; set; } = new List<Reservation>();
         public ICollection<Feedback> Feedback { get; set; } = new List<Feedback>();
+
         public DateTime CreatedDate { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public bool IsDeleted { get; set; }
