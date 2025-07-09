@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { NavBar } from "./components/navigations/NavBar";
+import { Routes } from "react-router-dom";
 
 function App() {
   const [forecasts, setForecasts] = useState();
@@ -46,10 +47,13 @@ function App() {
 
   return (
     <div>
-      <NavBar />
-      <h1 id="tableLabel">Weather forecast</h1>
-      <p>This component demonstrates fetching data from the server.</p>
-      {contents}
+      <Routes>
+        <Route path="/navbar" element={<NavBar />}></Route>
+
+        <h1 id="tableLabel">Weather forecast</h1>
+        <p>This component demonstrates fetching data from the server.</p>
+        {contents}
+      </Routes>
     </div>
   );
 
