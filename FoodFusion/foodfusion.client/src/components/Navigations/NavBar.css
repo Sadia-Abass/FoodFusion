@@ -3,5 +3,6 @@ nav {
 }
 
 .navbar {
-  background-color: orange;
+  background-color: white;
+  border-color: orange;
 }

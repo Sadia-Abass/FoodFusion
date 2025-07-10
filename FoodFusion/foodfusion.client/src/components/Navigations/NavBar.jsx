@@ -1,23 +1,33 @@
 import { NavLink } from "react-router-dom";
+import { TiThMenuOutline } from "react-icons/ti";
 import "./NavBar.css";
 
 export const NavBar = () => {
   return (
     <div>
       <nav
-        className="navbar navbar-expand-lg py-4 py-lg-0 shadow bg-info"
-        data-bs-theme=""
-        // style={{background-color: }}
+        className="navbar navbar-expand-lg py-4 py-lg-0 shadow"
+        data-bs-theme="light"
       >
         <div className="container px-4">
-          <img src="" alt="" />
+          <img
+            className="navbar-brand"
+            width={150}
+            height={150}
+            src="./src/assets/logo.png"
+            alt=""
+          />
           <button
-            className="navbar-toggler border-0"
+            className="navbar-toggler"
+            type="button"
             data-bs-toggle="offcanvas"
-            data-bs-target="#top-navbar"
-            aria-controls="top-navbar"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation"
           >
-            <i className=""></i>
+            <i className="bg-light">
+              <TiThMenuOutline />
+            </i>
           </button>
           <div
             className="offcanvas offcanvas-start"
@@ -38,6 +48,11 @@ export const NavBar = () => {
               </div>
             </button>
             <ul className="navbar-nav ms-lg-auto p-4 p-lg-0">
+              <li className="nav-link px-3 px-lg-0 py-1 py-lg-4">
+                <NavLink className="nav-link" to="/">
+                  Home
+                </NavLink>
+              </li>
               <li className="nav-link px-3 px-lg-0 py-1 py-lg-4">
                 <NavLink className="nav-link" to="/delivery">
                   Delivery
