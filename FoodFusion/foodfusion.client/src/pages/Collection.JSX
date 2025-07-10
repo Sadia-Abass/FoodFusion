@@ -1,3 +1,5 @@
 export const Collection = () => {
-  return <div></div>;
-};
+  return (
+    <p>Hello world! Collection</p>
+  );
+}

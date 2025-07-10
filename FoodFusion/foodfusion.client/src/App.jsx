@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { NavBar } from "./components/navigations/NavBar";
-import { Routes, Route } from "react-router-dom";
+import { NavBar } from "./components/Navigations/NavBar";
+import { Sidebar } from "./components/Navigations/Sidebar";
+import { Home } from "./pages/Home";
+import { Collection } from "./pages/Collection";
+import { Delivery } from "./pages/Delivery";
+import { Reservation } from "./pages/Reservation"
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
 
 function App() {
   const [forecasts, setForecasts] = useState();
@@ -46,10 +53,20 @@ function App() {
     );
 
   return (
-    <div>
+      <div>
+    <BrowserRouter>
+        <NavBar />
       <Routes>
-        <Route path="/navbar" element={<NavBar />}></Route>
+        <Route path="/" element={<Home />}></Route>
+       {/* <Route path="/navbar" element={<NavBar />}></Route>*/}
+        <Route path="/sidebar" element={<Sidebar />}></Route>
+        <Route path="/delivery" element={<Delivery />}></Route>
+        <Route path="/collection" element={<Collection />}></Route>
+        <Route path="/reservation" element={<Reservation />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
       </Routes>
+    </BrowserRouter>
       <h1 id="tableLabel">Weather forecast</h1>
       <p>This component demonstrates fetching data from the server.</p>
       {contents}

@@ -5,8 +5,8 @@ export const NavBar = () => {
     <div>
       <header>
         <nav
-          className="navbar navbar-expand-lg py-4 py-lg-0 shadow"
-          data-bs-theme="dark"
+          className="navbar navbar-expand-lg py-4 py-lg-0 shadow bg-orange"
+          data-bs-theme="light"
         >
           <div className="container px-4">
             <img src="" alt="" />
@@ -38,18 +38,28 @@ export const NavBar = () => {
               </button>
               <ul className="navbar-nav ms-lg-auto p-4 p-lg-0">
                 <li className="nav-link px-3 px-lg-0 py-1 py-lg-4">
-                  <NavLink className="nav-link" to="/">
+                  <NavLink className="nav-link" to="/delivery">
                     Delivery
                   </NavLink>
                 </li>
                 <li className="nav-link px-3 px-lg-0 py-1 py-lg-4">
-                  <NavLink className="nav-link" to="/">
+                  <NavLink className="nav-link" to="/collection">
                     Collection
                   </NavLink>
                 </li>
                 <li className="nav-link px-3 px-lg-0 py-1 py-lg-4">
-                  <NavLink className="nav-link" to="/">
-                    Book Table
+                  <NavLink className="nav-link" to="/reservation">
+                    Reservation
+                  </NavLink>
+                </li>
+                <li className="nav-link px-3 px-lg-0 py-1 py-lg-4">
+                  <NavLink className="nav-link" to="/login">
+                    Login
+                  </NavLink>
+                </li>
+                <li className="nav-link px-3 px-lg-0 py-1 py-lg-4">
+                  <NavLink className="nav-link" to="/register">
+                    Register
                   </NavLink>
                 </li>
               </ul>

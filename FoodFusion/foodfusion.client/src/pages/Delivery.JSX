@@ -1,3 +1,5 @@
 export const Delivery = () => {
-  return <div></div>;
-};
+  return (
+    <p>Hello world! Delivery</p>
+  );
+}
