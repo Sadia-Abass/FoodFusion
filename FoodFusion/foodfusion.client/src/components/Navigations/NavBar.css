@@ -2,7 +2,23 @@ nav {
   width: 100%;
 }
 
+img {
+  max-width: 150px;
+  width: 100%;
+}
 .navbar {
   background-color: white;
   border-color: orange;
 }
+
+.nav-link {
+  font-weight: 600;
+  color: #fd7e14;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* @mdia (min-width:992px) {
+} */
