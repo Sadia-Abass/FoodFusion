@@ -53,26 +53,34 @@ function App() {
     );
 
   return (
-    <div>
+    <div className="">
       <BrowserRouter>
         <header>
           <NavBar />
         </header>
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            {/* <Route path="/navbar" element={<NavBar />}></Route>*/}
-            <Route path="/sidebar" element={<Sidebar />}></Route>
-            <Route path="/delivery" element={<Delivery />}></Route>
-            <Route path="/collection" element={<Collection />}></Route>
-            <Route path="/reservation" element={<Reservation />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/register" element={<Register />}></Route>
-          </Routes>
-          <h1 id="tableLabel">Weather forecast</h1>
-          <p>This component demonstrates fetching data from the server.</p>
-          {contents}
-        </main>
+        <div className="container-fuild min-vh-100">
+          <div className="d-flex row">
+            <div className="col-2">
+              <Sidebar />
+            </div>
+            <div className="col-10">
+              <Routes>
+                <Route path="/" element={<Home />}></Route>
+                {/* <Route path="/navbar" element={<NavBar />}></Route>*/}
+                {/* <Route path="/sidebar" element={<Sidebar />}></Route> */}
+                <Route path="/delivery" element={<Delivery />}></Route>
+                <Route path="/collection" element={<Collection />}></Route>
+                <Route path="/reservation" element={<Reservation />}></Route>
+                <Route path="/login" element={<Login />}></Route>
+                <Route path="/register" element={<Register />}></Route>
+              </Routes>
+
+              <h1 id="tableLabel">Weather forecast</h1>
+              <p>This component demonstrates fetching data from the server.</p>
+              {contents}
+            </div>
+          </div>
+        </div>
       </BrowserRouter>
     </div>
   );
