@@ -1,6 +1,7 @@
 ﻿using FoodFusion.Server.Data;
 using FoodFusion.Server.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
@@ -33,7 +34,16 @@ namespace FoodFusion.Server.Configurations
                 options.Password.RequireUppercase = true;
                 options.Password.RequireNonAlphanumeric = true;
                 options.Password.RequiredLength = 8;
-            }).AddEntityFrameworkStores<ApplicationDbContext>();
+            }).AddEntityFrameworkStores<ApplicationDbContext>()
+              .AddDefaultTokenProviders();
+
+
+            var jwtSettings = configuration.GetSection("JwtSettings").Get<JwtSettings>();
+            if(jwtSettings == null || string.IsNullOrEmpty(jwtSettings.Key))
+            {
+                throw new InvalidOperationException("JWT secret key is not configured.");
+            }
+
 
             services.AddAuthentication(options =>
             {
@@ -48,11 +58,11 @@ namespace FoodFusion.Server.Configurations
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
-                    ValidIssuer = configuration["JWT:Issuer"], //builder.Configuration["JWT:Issuer"],
+                    ValidIssuer = jwtSettings.Issuer, 
                     ValidateAudience = true,
-                    ValidAudience = configuration["JWT:Audience"],
+                    ValidAudience = jwtSettings.Audience,
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(configuration["JWT:SingingKey"]))
+                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(jwtSettings.Key))
                 };
             });
 
