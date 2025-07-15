@@ -1,5 +1,7 @@
 ﻿using FoodFusion.Server.Data;
 using FoodFusion.Server.Entities;
+using FoodFusion.Server.Repositories.implementations;
+using FoodFusion.Server.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -44,6 +46,7 @@ namespace FoodFusion.Server.Configurations
                 throw new InvalidOperationException("JWT secret key is not configured.");
             }
 
+            services.AddScoped<ITokenRepository, TokenRepository>();
 
             services.AddAuthentication(options =>
             {
