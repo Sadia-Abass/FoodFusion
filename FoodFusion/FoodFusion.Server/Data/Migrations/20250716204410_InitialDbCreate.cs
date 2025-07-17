@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FoodFusion.Server.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialDbCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -118,7 +118,6 @@ namespace FoodFusion.Server.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -165,7 +164,6 @@ namespace FoodFusion.Server.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -794,16 +792,16 @@ namespace FoodFusion.Server.Data.Migrations
                 columns: new[] { "CuisineID", "CreatedDate", "IsDeleted", "Type", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9501), false, "Chinese", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9503), false, "Indian", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 3L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9504), false, "Italian", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 4L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9505), false, "Jamaican", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 5L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9506), false, "Korean", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 6L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9507), false, "English", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 7L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9508), false, "American", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 8L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9509), false, "Greek", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 9L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9510), false, "Turkish", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 10L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9511), false, "Japanese", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8469), false, "Chinese", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8472), false, "Indian", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8473), false, "Italian", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 4L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8474), false, "Jamaican", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 5L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8475), false, "Korean", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 6L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8476), false, "English", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 7L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8477), false, "American", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 8L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8520), false, "Greek", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 9L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8521), false, "Turkish", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 10L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8522), false, "Japanese", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.InsertData(
@@ -812,10 +810,10 @@ namespace FoodFusion.Server.Data.Migrations
                 columns: new[] { "MealTypeId", "CreatedDate", "IsDeleted", "ModifiedDate", "Name" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9653), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Beakfast" },
-                    { 2L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9656), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lunch" },
-                    { 3L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9656), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Dinner" },
-                    { 4L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9657), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "All Day" }
+                    { 1L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8654), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Beakfast" },
+                    { 2L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8655), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lunch" },
+                    { 3L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8656), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Dinner" },
+                    { 4L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8657), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "All Day" }
                 });
 
             migrationBuilder.InsertData(
@@ -824,12 +822,24 @@ namespace FoodFusion.Server.Data.Migrations
                 columns: new[] { "MealCourseId", "CreatedDate", "IsDeleted", "LastModifiedDate", "MealType" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9710), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Appertizers/Starters" },
-                    { 2L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9711), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Main Course" },
-                    { 3L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9712), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sides" },
-                    { 4L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9713), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Desserts" },
-                    { 5L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9714), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sauces" },
-                    { 6L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9715), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Extras" }
+                    { 1L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8717), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Appertizers/Starters" },
+                    { 2L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8718), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Main Course" },
+                    { 3L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8719), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sides" },
+                    { 4L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8719), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Desserts" },
+                    { 5L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8720), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sauces" },
+                    { 6L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8721), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Extras" }
+                });
+
+            migrationBuilder.InsertData(
+                schema: "dbo",
+                table: "Roles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "06fb7b60-212f-4bd7-b355-a9897941b098", null, "Super Admin", "SUPER ADMIN" },
+                    { "1ad173fc-a603-4aca-a3f9-f73cd8d1536f", null, "Manager", "MANAGER" },
+                    { "53e4be79-0abb-4338-b182-dc1bf219ec1b", null, "Admin", "ADMIN" },
+                    { "e0bc0611-8932-4eaf-ab20-a167d177e7d5", null, "Customer", "CUSTOMER" }
                 });
 
             migrationBuilder.InsertData(
@@ -856,16 +866,16 @@ namespace FoodFusion.Server.Data.Migrations
                 columns: new[] { "DishTypeId", "CreatedDate", "IsDeleted", "ModifiedDate", "Name" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9678), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Curry" },
-                    { 2L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9680), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pasta" },
-                    { 3L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9681), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cakes" },
-                    { 4L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9681), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Rice" },
-                    { 5L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9682), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Soups" },
-                    { 6L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9683), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Chicken" },
-                    { 7L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9684), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Bread" },
-                    { 8L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9685), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Coffee" },
-                    { 9L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9685), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tea" },
-                    { 10L, new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9686), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kebab" }
+                    { 1L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8681), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Curry" },
+                    { 2L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8682), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pasta" },
+                    { 3L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8683), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cakes" },
+                    { 4L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8684), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Rice" },
+                    { 5L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8685), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Soups" },
+                    { 6L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8686), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Chicken" },
+                    { 7L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8686), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Bread" },
+                    { 8L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8687), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Coffee" },
+                    { 9L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8688), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tea" },
+                    { 10L, new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8690), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kebab" }
                 });
 
             migrationBuilder.CreateIndex(

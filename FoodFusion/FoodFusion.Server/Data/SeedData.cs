@@ -62,6 +62,14 @@ namespace FoodFusion.Server.Data
                 new Status { Id = 10, Name = "Refunded" }
                 );
 
+            List<ApplicationRole> roles = new List<ApplicationRole>
+            {
+                new ApplicationRole { Name = "Super Admin", NormalizedName = "SUPER ADMIN"},
+                new ApplicationRole { Name = "Admin", NormalizedName = "ADMIN"},
+                new ApplicationRole { Name = "Manager", NormalizedName = "MANAGER"},
+                new ApplicationRole { Name = "Customer", NormalizedName = "CUSTOMER"}
+            };
+            modelBuilder.Entity<ApplicationRole>().HasData(roles);
 
             //modelBuilder.Entity<Restaurant>().HasData(
             //    new Restaurant { RestaurantId = 1, Name = "The Empire's Kitchen", AddressLineOne = "26 Green Street", AddressLineTwo = "", City = "London", PostCode = "N1C 6TR", PhoneNumber = "02089236945", CuisineId = 1},

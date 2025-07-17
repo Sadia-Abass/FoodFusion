@@ -15,11 +15,12 @@ namespace FoodFusion.Server.Configurations
         {
             // Configure EF Core with SQL Server
             var connectionString = configuration.GetConnectionString("FusionFood") ?? throw new ArgumentNullException(nameof(configuration));
-            services.AddDbContext<ApplicationDbContext>(options => {
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
                 options.UseSqlServer(connectionString);
             });
 
-            
+
             // Configure session options
             services.AddDistributedMemoryCache();
             services.AddSession(options => 
@@ -36,8 +37,8 @@ namespace FoodFusion.Server.Configurations
                 options.Password.RequireUppercase = true;
                 options.Password.RequireNonAlphanumeric = true;
                 options.Password.RequiredLength = 8;
-            }).AddEntityFrameworkStores<ApplicationDbContext>()
-              .AddDefaultTokenProviders();
+            }).AddEntityFrameworkStores<ApplicationDbContext>();
+              //.AddDefaultTokenProviders();
 
 
             var jwtSettings = configuration.GetSection("JwtSettings").Get<JwtSettings>();

@@ -89,10 +89,6 @@ namespace FoodFusion.Server.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -109,6 +105,32 @@ namespace FoodFusion.Server.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("Roles", "dbo");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "06fb7b60-212f-4bd7-b355-a9897941b098",
+                            Name = "Super Admin",
+                            NormalizedName = "SUPER ADMIN"
+                        },
+                        new
+                        {
+                            Id = "53e4be79-0abb-4338-b182-dc1bf219ec1b",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "1ad173fc-a603-4aca-a3f9-f73cd8d1536f",
+                            Name = "Manager",
+                            NormalizedName = "MANAGER"
+                        },
+                        new
+                        {
+                            Id = "e0bc0611-8932-4eaf-ab20-a167d177e7d5",
+                            Name = "Customer",
+                            NormalizedName = "CUSTOMER"
+                        });
                 });
 
             modelBuilder.Entity("FoodFusion.Server.Entities.ApplicationRoleClaim", b =>
@@ -187,10 +209,6 @@ namespace FoodFusion.Server.Data.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("UserType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -428,7 +446,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             CuisineID = 1L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9501),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8469),
                             IsDeleted = false,
                             Type = "Chinese",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -436,7 +454,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             CuisineID = 2L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9503),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8472),
                             IsDeleted = false,
                             Type = "Indian",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -444,7 +462,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             CuisineID = 3L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9504),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8473),
                             IsDeleted = false,
                             Type = "Italian",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -452,7 +470,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             CuisineID = 4L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9505),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8474),
                             IsDeleted = false,
                             Type = "Jamaican",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -460,7 +478,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             CuisineID = 5L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9506),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8475),
                             IsDeleted = false,
                             Type = "Korean",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -468,7 +486,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             CuisineID = 6L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9507),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8476),
                             IsDeleted = false,
                             Type = "English",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -476,7 +494,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             CuisineID = 7L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9508),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8477),
                             IsDeleted = false,
                             Type = "American",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -484,7 +502,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             CuisineID = 8L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9509),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8520),
                             IsDeleted = false,
                             Type = "Greek",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -492,7 +510,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             CuisineID = 9L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9510),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8521),
                             IsDeleted = false,
                             Type = "Turkish",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -500,7 +518,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             CuisineID = 10L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9511),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8522),
                             IsDeleted = false,
                             Type = "Japanese",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -588,7 +606,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             DishTypeId = 1L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9678),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8681),
                             IsDeleted = false,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Curry"
@@ -596,7 +614,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             DishTypeId = 2L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9680),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8682),
                             IsDeleted = false,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Pasta"
@@ -604,7 +622,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             DishTypeId = 3L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9681),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8683),
                             IsDeleted = false,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Cakes"
@@ -612,7 +630,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             DishTypeId = 4L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9681),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8684),
                             IsDeleted = false,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Rice"
@@ -620,7 +638,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             DishTypeId = 5L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9682),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8685),
                             IsDeleted = false,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Soups"
@@ -628,7 +646,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             DishTypeId = 6L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9683),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8686),
                             IsDeleted = false,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Chicken"
@@ -636,7 +654,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             DishTypeId = 7L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9684),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8686),
                             IsDeleted = false,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Bread"
@@ -644,7 +662,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             DishTypeId = 8L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9685),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8687),
                             IsDeleted = false,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Coffee"
@@ -652,7 +670,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             DishTypeId = 9L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9685),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8688),
                             IsDeleted = false,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Tea"
@@ -660,7 +678,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             DishTypeId = 10L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9686),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8690),
                             IsDeleted = false,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Kebab"
@@ -808,7 +826,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             MealCourseId = 1L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9710),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8717),
                             IsDeleted = false,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MealType = "Appertizers/Starters"
@@ -816,7 +834,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             MealCourseId = 2L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9711),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8718),
                             IsDeleted = false,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MealType = "Main Course"
@@ -824,7 +842,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             MealCourseId = 3L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9712),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8719),
                             IsDeleted = false,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MealType = "Sides"
@@ -832,7 +850,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             MealCourseId = 4L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9713),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8719),
                             IsDeleted = false,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MealType = "Desserts"
@@ -840,7 +858,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             MealCourseId = 5L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9714),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8720),
                             IsDeleted = false,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MealType = "Sauces"
@@ -848,7 +866,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             MealCourseId = 6L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9715),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8721),
                             IsDeleted = false,
                             LastModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MealType = "Extras"
@@ -885,7 +903,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             MealTypeId = 1L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9653),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8654),
                             IsDeleted = false,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Beakfast"
@@ -893,7 +911,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             MealTypeId = 2L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9656),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8655),
                             IsDeleted = false,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Lunch"
@@ -901,7 +919,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             MealTypeId = 3L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9656),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8656),
                             IsDeleted = false,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Dinner"
@@ -909,7 +927,7 @@ namespace FoodFusion.Server.Data.Migrations
                         new
                         {
                             MealTypeId = 4L,
-                            CreatedDate = new DateTime(2025, 6, 30, 18, 49, 42, 888, DateTimeKind.Utc).AddTicks(9657),
+                            CreatedDate = new DateTime(2025, 7, 16, 20, 44, 10, 221, DateTimeKind.Utc).AddTicks(8657),
                             IsDeleted = false,
                             ModifiedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "All Day"
