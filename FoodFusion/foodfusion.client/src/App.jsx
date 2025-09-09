@@ -8,8 +8,8 @@ import { Home } from "./pages/Home";
 import { Collection } from "./pages/Collection";
 import { Delivery } from "./pages/Delivery";
 import { Reservation } from "./pages/Reservation";
-import { Login } from "./pages/Login";
-import { Register } from "./pages/Register";
+import { Register } from "./pages/Authentication/Register";
+import { Login } from "./pages/Authentication/Login";
 
 function App() {
   const [forecasts, setForecasts] = useState();
