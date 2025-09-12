@@ -20,6 +20,8 @@ namespace FoodFusion.Server.Configurations
                 options.UseSqlServer(connectionString);
             });
 
+            //  Registering the Address Repository
+           services.AddScoped<IAddressRepository, AddressRepository>();
 
             // Configure session options
             services.AddDistributedMemoryCache();
