@@ -124,6 +124,27 @@ namespace FoodFusion.Server.Data
                 .WithOne(e => e.ApplicationUser)
                 .HasForeignKey<Employee>(e => e.ApplicationUserId);
 
+            // Configure Customer relationship
+            builder.Entity<Customer>(c =>
+            {
+                // Each customer can have many orders
+                c.HasMany(o => o.Orders)
+                 .WithOne(c => c.Customer)
+                 .HasForeignKey(o => o.CustomerID);
+
+                // Each customer can have many feedbacks
+                c.HasMany(f => f.Feedbacks)
+                 .WithOne(c => c.Customer)
+                 .HasForeignKey(f => f.CustomerId);
+
+                // Each customer can have many reservations
+                c.HasMany(r => r.Reservation)
+                 .WithOne(c => c.Customer)
+                 .HasForeignKey(r => r.ReservationID);
+
+            });
+                
+
             // Configure one-to-one relationship for MenuItem with MenuItemImage
             builder.Entity<MenuItemImage>()
                 .HasOne(m => m.MenuItem)
