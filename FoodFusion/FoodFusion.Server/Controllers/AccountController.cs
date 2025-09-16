@@ -29,7 +29,7 @@ namespace FoodFusion.Server.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult> Login([FromBody] LoginDto loginDto)
+        public async Task<ActionResult> Login([FromBody]LoginDto loginDto)
         {
             if (!ModelState.IsValid)
             {
