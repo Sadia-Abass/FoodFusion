@@ -1,4 +1,8 @@
-﻿using FoodFusion.Server.Entities;
+﻿using FoodFusion.Server.DTOs.AddressesDTOs;
+using FoodFusion.Server.DTOs.FeedbackDTOs;
+using FoodFusion.Server.DTOs.OrdersDTOs;
+using FoodFusion.Server.DTOs.ReservationResponseDTOs;
+using FoodFusion.Server.Entities;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,5 +16,10 @@ namespace FoodFusion.Server.DTOs.CustomerDTOs
         public string Surname { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public DateTime DateOfBirth { get; set; }
+
+        public List<AddressResponseDTO>? Addresses { get; set; } 
+        public List<OrderResponseDTO>? Orders { get; set; }
+        public List<FeedbackResponseDTO>? Feedbacks { get; set; }
+        public List<ReservationResponseDTO>? Reservation { get; set; }
     }
 }
