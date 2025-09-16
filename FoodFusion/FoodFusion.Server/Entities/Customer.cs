@@ -13,10 +13,10 @@ namespace FoodFusion.Server.Entities
         public string ApplicationUserId { get; set; } = string.Empty;
         [ForeignKey(nameof(ApplicationUserId))]
         public virtual ApplicationUser ApplicationUser { get; set; } = new ApplicationUser();
-        [Required(ErrorMessage = "Enter name")]
+        [Required(ErrorMessage = "Name is required.")]
         [StringLength(100)]
         public string Name { get; set; } = string.Empty;
-        [Required(ErrorMessage = "Enter Surname")]
+        [Required(ErrorMessage = "Surname is required.")]
         [StringLength(100)]
         public string Surname { get; set; } = string.Empty;
         [Required(ErrorMessage = "Email Address is required")]
@@ -24,8 +24,8 @@ namespace FoodFusion.Server.Entities
         public string Email { get; set; } = string.Empty;
         [Required(ErrorMessage = "Date of birth is required")]
         public DateTime DateOfBirth { get; set; }
-        [Required(ErrorMessage = "Password is required.")]
-        public string Password { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Phone Number is required.")]
+        public string PhoneNumber { get; set; } = string.Empty;
         public DateTime DateJoined { get; set; }
         public DateTime DateLastModified { get; set; }
         public bool IsActive { get; set; }
