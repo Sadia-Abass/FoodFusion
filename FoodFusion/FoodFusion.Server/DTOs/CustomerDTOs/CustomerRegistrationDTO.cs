@@ -11,15 +11,17 @@ namespace FoodFusion.Server.DTOs.CustomerDTOs
         public string ApplicationUserId { get; set; } = string.Empty;
         //[ForeignKey(nameof(ApplicationUserId))]
         //public virtual ApplicationUser ApplicationUser { get; set; } = new ApplicationUser();
-        [Required(ErrorMessage = "Enter name")]
+        [Required(ErrorMessage = "Name is required.")]
         [StringLength(100)]
         public string Name { get; set; } = string.Empty;
-        [Required(ErrorMessage = "Enter Surname")]
+        [Required(ErrorMessage = "Surname is required.")]
         [StringLength(100)]
         public string Surname { get; set; } = string.Empty;
         [Required(ErrorMessage = "Email Address is required")]
         [StringLength(100)]
         public string Email { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Phone number is required.")]
+        public string PhoneNumber { get; set; } = string.Empty;
         [Required(ErrorMessage = "Date of birth is required")]
         public DateTime DateOfBirth { get; set; }
     }

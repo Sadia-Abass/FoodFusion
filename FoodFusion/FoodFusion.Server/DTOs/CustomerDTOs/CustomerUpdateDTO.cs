@@ -20,6 +20,8 @@ namespace FoodFusion.Server.DTOs.CustomerDTOs
         [Required(ErrorMessage = "Email Address is required")]
         [StringLength(100)]
         public string Email { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Phone Number is required.")]
+        public string PhoneNumber { get; set; } = string.Empty;
         [Required(ErrorMessage = "Date of birth is required")]
         public DateTime DateOfBirth { get; set; }
     }
