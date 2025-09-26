@@ -8,7 +8,7 @@ namespace FoodFusion.Server.Services.Interfaces
         Task<string> GenerateAccessTokenAsync(ApplicationUser applicationUser);
         string GenerateRefreshToken();
         ClaimsPrincipal GetPrincipalFromExpiryToken(string token);
-        Task<bool> ValidateRefreshTokenAsync(string refershToken, string userId);
+        Task<bool> ValidateRefreshTokenAsync(string refreshToken, string userId);
         Task RevokeRefreshTokenAsync(string userId);
         Task RevokeAllRefreshTokenAsync(string userId);
     }
