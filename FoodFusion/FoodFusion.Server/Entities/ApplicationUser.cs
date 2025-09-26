@@ -4,8 +4,8 @@ namespace FoodFusion.Server.Entities
 {
     public class ApplicationUser : IdentityUser 
     {
-        //public string UserType { get; set; } = string.Empty;
-
+        public string? RefreshToken { get; set; }
+        public DateTime RefreshTokenExpiry { get; set; }
         public virtual Customer Customer { get; set; } = new Customer();
         public virtual Employee Employee { get; set; } = new Employee();
         public virtual ICollection<ApplicationUserClaim>? Claims { get; set; }
@@ -16,7 +16,6 @@ namespace FoodFusion.Server.Entities
 
     public class ApplicationRole : IdentityRole
     {
-       // public string Description { get; set; } = string.Empty;
         public virtual ICollection<ApplicationUserRole>? UserRoles { get; set; }
         public virtual ICollection<ApplicationRoleClaim>? RoleClaims { get; set; }
     }

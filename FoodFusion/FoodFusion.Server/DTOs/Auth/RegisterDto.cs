@@ -4,17 +4,12 @@ namespace FoodFusion.Server.DTOs.Auth
 {
     public class RegisterDto
     {
-        //[Required]
-        //public string? Username { get; set; }
+        [Required]
+        public string? Username { get; set; }
 
         [Required]
         [EmailAddress]
         public string? Email { get; set; }
-
-        //[Required]
-        //[EmailAddress]
-        //[Compare("Email")]
-        //public string? ConfirmEmail { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
