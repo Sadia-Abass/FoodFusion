@@ -162,7 +162,7 @@ namespace FoodFusion.Server.Repositories.implementations
                     Message = $"Customer with Id {customerUpdateDto.CustomerID} updated successfully."
                 };
 
-                return new ApiResponse<ConfirmationResponseDTO>(500, confirmationMessage);
+                return new ApiResponse<ConfirmationResponseDTO>(200, confirmationMessage);
             }
             catch (Exception ex) 
             {

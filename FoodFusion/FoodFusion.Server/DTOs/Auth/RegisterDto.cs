@@ -22,5 +22,14 @@ namespace FoodFusion.Server.DTOs.Auth
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         [StringLength(25, ErrorMessage = "the {0} must be at least {1} characters long.",  MinimumLength = 8)]
         public string? ConfirmPassword { get; set; }
+
+        [StringLength(100)]
+        public string FirstName { get; set; } = string.Empty;
+
+        [StringLength(100)]
+        public string LastName { get; set; } = string.Empty;
+
+        [Phone]
+        public string PhoneNumber { get; set; } = string.Empty;
     }
 }

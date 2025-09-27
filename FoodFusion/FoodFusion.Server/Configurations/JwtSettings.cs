@@ -10,11 +10,13 @@ namespace FoodFusion.Server.Configurations
             Issuer = "https://localhost:nnnn";
             Audience = "Audience";
             MinutesToExpiration = 30;
+            RefreshTokenExpireDays = 7;
         }
 
         public string Key { get; set; }
         public string Issuer { get; set; }
         public string Audience { get; set; }
         public int MinutesToExpiration { get; set; }
+        public int RefreshTokenExpireDays { get; set; } 
     }
 }

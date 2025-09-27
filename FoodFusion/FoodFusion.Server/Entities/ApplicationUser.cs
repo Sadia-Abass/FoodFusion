@@ -8,7 +8,7 @@ namespace FoodFusion.Server.Entities
         public string LastName { get; set; } = string.Empty;
         public string? RefreshToken { get; set; }
         public DateTime RefreshTokenExpiry { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
         public virtual Customer Customer { get; set; } = new Customer();
         public virtual Employee Employee { get; set; } = new Employee();
         public virtual ICollection<ApplicationUserClaim>? Claims { get; set; }

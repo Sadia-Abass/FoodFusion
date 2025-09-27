@@ -5,7 +5,7 @@ namespace FoodFusion.Server.DTOs.Auth
     public class ChangePasswordDTO
     {
         [Required]
-        public string Password { get; set; } = string.Empty;
+        public string CurrentPassword { get; set; } = string.Empty;
 
         [Required]
         [StringLength(25, MinimumLength = 8)]
