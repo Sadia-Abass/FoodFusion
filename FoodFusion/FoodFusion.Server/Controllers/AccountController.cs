@@ -48,8 +48,6 @@ namespace FoodFusion.Server.Controllers
                 return Unauthorized(new { message = "Invalid email or password." });
             }
 
-            // Store email in session
-            //HttpContent.Session.SetString("email", user.Email);
 
             // Generate Jwt token
             var token = _tokenRepository.CreateToken(user);
