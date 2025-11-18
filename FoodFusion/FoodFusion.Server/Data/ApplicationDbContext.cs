@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FoodFusion.Server.Data
@@ -13,25 +14,27 @@ namespace FoodFusion.Server.Data
         {           
         }
 
-        public DbSet<Address> Address { get; set; }
-        public DbSet<Cancellation> Cancellation { get; set; }
-        public DbSet<Cart> Cart { get; set; }
-        public DbSet<CartItem> CartItem { get; set; }
-        public DbSet<MealType> MealCategory { get; set; }
-        public DbSet<Cuisine> Cuisine { get; set; }
-        public DbSet<Customer> Customer { get; set; }
-        public DbSet<Employee> Employee { get; set; }   
-        public DbSet<Feedback> Feedback { get; set; }
-        public DbSet<MenuItem> MenuItem { get; set; }
-        public DbSet<MenuItemImage> MenuItemImage { get; set; }
-        public DbSet<Order> Order { get; set; }
-        public DbSet<OrderItem> OrderItem { get; set; }
-        public DbSet<Payment> Payment { get; set; }
-        public DbSet<Refund> Refund { get; set; }
-        public DbSet<Reservation> Reservation { get; set; }
-        public DbSet<Restaurant> Restaurant { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Cancellation> Cancellations { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<MealType> MealTypes { get; set; }
+        public DbSet<Cuisine> Cuisines { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Employee> Employees { get; set; }   
+        public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<MenuItem> MenuItems { get; set; }
+        public DbSet<MenuItemImage> MenuItemImages { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<Refund> Refunds { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Status> Status { get; set; }
-        public DbSet<DishType> SubCategory { get; set; }
+        public DbSet<DishType> DishTypes { get; set; }
+        public DbSet<MealCourse> MealCourses { get; set; }
+        public DbSet<MenuItemDishType> MenuItemDishTypes { get; set; }
 
         // Configuring model properties and relationships
         protected override void OnModelCreating(ModelBuilder builder)
@@ -151,29 +154,44 @@ namespace FoodFusion.Server.Data
                 .WithOne(i => i.MenuItemImage)
                 .HasForeignKey<MenuItem>(i => i.MenuItemID);
 
-            // Configure one-to-one relationship for MenuItem with MenuItemImage
-            builder.Entity<Cuisine>()
-                .HasMany(m => m.MenuItem)
-                .WithOne(c => c.Cuisine)
-                .HasForeignKey(i => i.CuisineId);
+            // Configure MenuItem -> Cuisine (Many-to-One)
+            builder.Entity<MenuItem>()
+                .HasOne(m => m.Cuisine)
+                .WithMany(c => c.MenuItems)
+                .HasForeignKey(m => m.CuisineId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            // Configure one-to-many relationship for Cuisine with Category
-            //builder.Entity<Cuisine>()
-            //    .HasMany(c => c.MealType)
-            //    .WithOne(c => c.Cuisine)
-            //    .HasForeignKey(c => c.MealTypeId);
+            // Configure MenuItem -> MealCourse (Many-to-One)
+            builder.Entity<MenuItem>()
+                .HasOne(m => m.MealCourse)
+                .WithMany(mc => mc.MenuItems)
+                .HasForeignKey(m => m.MealCourseId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            // Configure one-to-many relationship for Category with Subcategory
-            //builder.Entity<MealType>()
-            //    .HasMany(c => c.DishType)
-            //    .WithOne(s => s.MealType)
-            //    .HasForeignKey(s => s.MealTypeId);
+            // Configure MenuItem -> MealType (Many-to-One)
+            builder.Entity<MenuItem>()
+                .HasOne(m => m.MealType)
+                .WithMany(mt => mt.MenuItems)
+                .HasForeignKey(m => m.MealTypeId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            // Configure one-to-many relationship for Subcategory with MenuItem
-            builder.Entity<DishType>()
-                .HasMany(s => s.MenuItem)
-                .WithOne(m => m.DishType)
-                .HasForeignKey(m => m.DishTypeId);
+            // Configure Many-to-Many relationship between MenuItem and DishType
+            builder.Entity<MenuItemDishType>()
+                .HasOne(md => md.MenuItem)
+                .WithMany(m => m.MenuItemDishTypes)
+                .HasForeignKey(md => md.MenuItemId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<MenuItemDishType>()
+                .HasOne(md => md.DishType)
+                .WithMany(d => d.MenuItemDishTypes)
+                .HasForeignKey(md => md.DishTypeId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Create unique index to prevent duplicate MenuItem-DishType combinations
+            builder.Entity<MenuItemDishType>()
+                .HasIndex(md => new { md.MenuItemId, md.DishTypeId })
+                .IsUnique();
 
             // Configure one-to-many relationship for Order with BillingAddress 
             builder.Entity<Order>()
@@ -244,7 +262,7 @@ namespace FoodFusion.Server.Data
             // Configure one-to-many relationship for Restaurant with Cuisine
             builder.Entity<Restaurant>()
                 .HasMany(r => r.Cuisine)
-                .WithMany(c => c.Restaurant);
+                .WithMany(c => c.Restaurants);
 
             builder.Seed();
         }
