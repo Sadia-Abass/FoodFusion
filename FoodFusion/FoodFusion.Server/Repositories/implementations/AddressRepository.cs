@@ -21,7 +21,7 @@ namespace FoodFusion.Server.Repositories.implementations
             try
             {
                 // Check if customer exists
-                var customer = await _dbContext.Customer.FindAsync(addressCreateDTO.CustomerID);
+                var customer = await _dbContext.Customers.FindAsync(addressCreateDTO.CustomerID);
                 if (customer == null) 
                 {
                     return new ApiResponse<AddressResponseDTO>(404, "Customer not found");
@@ -39,7 +39,7 @@ namespace FoodFusion.Server.Repositories.implementations
                 };
 
                 // Add address to the database
-                _dbContext.Address.Add(address);
+                _dbContext.Addresses.Add(address);
                 await _dbContext.SaveChangesAsync();
 
                 // Map response to AddressResponseDTO
@@ -67,13 +67,13 @@ namespace FoodFusion.Server.Repositories.implementations
         {
             try
             {
-                var address = await _dbContext.Address.FirstOrDefaultAsync(add => add.AddressID == addressDeleteDTO.AddressID && add.CustomerID == addressDeleteDTO.CustomerID);
+                var address = await _dbContext.Addresses.FirstOrDefaultAsync(add => add.AddressID == addressDeleteDTO.AddressID && add.CustomerID == addressDeleteDTO.CustomerID);
                 if (address == null) 
                 {
                     return new ApiResponse<ConfirmationResponseDTO>(404, "Address not found.");
                 }
 
-                _dbContext.Address.Remove(address);
+                _dbContext.Addresses.Remove(address);
                 await _dbContext.SaveChangesAsync();
 
                 // Prepare confirmation
@@ -94,7 +94,7 @@ namespace FoodFusion.Server.Repositories.implementations
         {
             try
             {
-                var address = await _dbContext.Address.AsNoTracking().FirstOrDefaultAsync(add => add.AddressID == id);
+                var address = await _dbContext.Addresses.AsNoTracking().FirstOrDefaultAsync(add => add.AddressID == id);
                 if (address == null) 
                 {
                     return new ApiResponse<AddressResponseDTO>(404, "Address not found.");
@@ -127,7 +127,7 @@ namespace FoodFusion.Server.Repositories.implementations
         {
             try
             {
-                var customer = await _dbContext.Customer.AsNoTracking().Include(c => c.Addresses).FirstOrDefaultAsync(c => c.CustomerID == CustomerId);
+                var customer = await _dbContext.Customers.AsNoTracking().Include(c => c.Addresses).FirstOrDefaultAsync(c => c.CustomerID == CustomerId);
                 if (customer == null)
                 {
                     return new ApiResponse<List<AddressResponseDTO>>(404, "Customer not found.");
@@ -156,7 +156,7 @@ namespace FoodFusion.Server.Repositories.implementations
         {
             try
             {
-                var address = await _dbContext.Address.FirstOrDefaultAsync(add => add.AddressID == addressUpdateDTO.AddressID && add.CustomerID == add.CustomerID);
+                var address = await _dbContext.Addresses.FirstOrDefaultAsync(add => add.AddressID == addressUpdateDTO.AddressID && add.CustomerID == add.CustomerID);
                 if (address == null)
                 {
                     return new ApiResponse<ConfirmationResponseDTO>(404, "Address not found");

@@ -24,7 +24,7 @@ namespace FoodFusion.Server.Repositories.implementations
         {
             try
             {
-                var customer = await _dbContext.Customer.FirstOrDefaultAsync(c => c.CustomerID == id);
+                var customer = await _dbContext.Customers.FirstOrDefaultAsync(c => c.CustomerID == id);
                 if (customer == null) 
                 {
                     return new ApiResponse<ConfirmationResponseDTO>(404, "Customer not found.");
@@ -51,7 +51,7 @@ namespace FoodFusion.Server.Repositories.implementations
         {
             try
             {
-               var customer = await _dbContext.Customer.AsNoTracking().FirstOrDefaultAsync(c => c.CustomerID == id && c.IsActive == true);
+               var customer = await _dbContext.Customers.AsNoTracking().FirstOrDefaultAsync(c => c.CustomerID == id && c.IsActive == true);
                 if (customer == null) 
                 { 
                     return new ApiResponse<CustomerResponseDTO>(404, "Customer not found.");
@@ -86,7 +86,7 @@ namespace FoodFusion.Server.Repositories.implementations
             try
             {
                 // Check if email already exists
-                var existingCustomer = await _dbContext.Customer.AnyAsync(c => c.Email == customerRegisterDto.Email);
+                var existingCustomer = await _dbContext.Customers.AnyAsync(c => c.Email == customerRegisterDto.Email);
                 if (existingCustomer) 
                 {
                     return new ApiResponse<CustomerResponseDTO>(400, "Email is already in use.");
@@ -106,7 +106,7 @@ namespace FoodFusion.Server.Repositories.implementations
                 };
 
                 // Add customer to the database
-                _dbContext.Customer.Add(customer);
+                _dbContext.Customers.Add(customer);
                 await _dbContext.SaveChangesAsync();
 
                 // Prepare response data
@@ -135,14 +135,14 @@ namespace FoodFusion.Server.Repositories.implementations
         {
             try
             {
-                var customer = await _dbContext.Customer.FindAsync(customerUpdateDto.CustomerID);
+                var customer = await _dbContext.Customers.FindAsync(customerUpdateDto.CustomerID);
                 if (customer == null) 
                 {
                     return new ApiResponse<ConfirmationResponseDTO>(404, "Customer not found.");
                 }
 
                 // Check if email is being updated to an existing one
-                if (customer.Email != customerUpdateDto.Email && await _dbContext.Customer.AnyAsync(c => c.Email == customerUpdateDto.Email)) 
+                if (customer.Email != customerUpdateDto.Email && await _dbContext.Customers.AnyAsync(c => c.Email == customerUpdateDto.Email)) 
                 {
                     return new ApiResponse<ConfirmationResponseDTO>(400, "Email is already in use.");
                 }

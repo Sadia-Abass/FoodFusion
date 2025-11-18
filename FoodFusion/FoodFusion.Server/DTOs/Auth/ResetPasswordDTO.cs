@@ -17,6 +17,6 @@ namespace FoodFusion.Server.DTOs.Auth
 
         [Required]
         [Compare("NewPassword")]
-        public string ConfirmPassword = string.Empty;
+        public string ConfirmPassword { get; set; } = string.Empty;
     }
 }

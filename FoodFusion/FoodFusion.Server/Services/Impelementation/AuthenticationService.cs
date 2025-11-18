@@ -63,7 +63,7 @@ namespace FoodFusion.Server.Services.Impelementation
                 var result = await _userManager.CreateAsync(newUser, registerDto.Password!);
                 if (!result.Succeeded)
                 {
-                    return new ApiResponse<TokenResponseDTO>(400, result.Errors.Select(e => e.Description).ToList();
+                    return new ApiResponse<TokenResponseDTO>(400, result.Errors.Select(e => e.Description).ToList());
                 }
 
                 // Add customer to default role

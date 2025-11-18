@@ -8,16 +8,16 @@ namespace FoodFusion.Server.Data
         public static void Seed(this ModelBuilder modelBuilder) 
         {
             modelBuilder.Entity<Cuisine>().HasData(
-                new Cuisine { CuisineID = 1, Type = "Chinese", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new Cuisine { CuisineID = 2, Type = "Indian", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new Cuisine { CuisineID = 3, Type = "Italian", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new Cuisine { CuisineID = 4, Type = "Jamaican", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new Cuisine { CuisineID = 5, Type = "Korean", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new Cuisine { CuisineID = 6, Type = "English", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new Cuisine { CuisineID = 7, Type = "American", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new Cuisine { CuisineID = 8, Type = "Greek", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new Cuisine { CuisineID = 9, Type = "Turkish", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new Cuisine { CuisineID = 10, Type = "Japanese", CreatedDate = DateTime.UtcNow, IsDeleted = false }
+                new Cuisine { CuisineID = 1, Name = "Chinese", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new Cuisine { CuisineID = 2, Name = "Indian", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new Cuisine { CuisineID = 3, Name = "Italian", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new Cuisine { CuisineID = 4, Name = "Jamaican", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new Cuisine { CuisineID = 5, Name = "Korean", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new Cuisine { CuisineID = 6, Name = "English", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new Cuisine { CuisineID = 7, Name = "American", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new Cuisine { CuisineID = 8, Name = "Greek", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new Cuisine { CuisineID = 9, Name = "Turkish", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new Cuisine { CuisineID = 10, Name = "Japanese", CreatedDate = DateTime.UtcNow, IsDeleted = false }
                 );
 
             modelBuilder.Entity<MealType>().HasData(
@@ -37,16 +37,24 @@ namespace FoodFusion.Server.Data
                 new DishType { DishTypeId = 7, Name = "Bread"   , CreatedDate = DateTime.UtcNow, IsDeleted = false },
                 new DishType { DishTypeId = 8, Name = "Coffee", CreatedDate = DateTime.UtcNow, IsDeleted = false },
                 new DishType { DishTypeId = 9, Name = "Tea", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new DishType { DishTypeId = 10, Name = "Kebab", CreatedDate = DateTime.UtcNow, IsDeleted = false }
+                new DishType { DishTypeId = 10, Name = "Kebab", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType { DishTypeId = 11, Name = "Vegetarian", Description = "No meat or fish", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType { DishTypeId = 12, Name = "Vegan", Description = "No animal products", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType {DishTypeId = 13, Name = "Gluten-Free", Description = "Contains no gluten", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType {DishTypeId = 14, Name = "Spicy", Description = "Contains hot spices", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType {DishTypeId = 15, Name = "Dairy-Free", Description = "No dairy products", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType {DishTypeId = 16, Name = "Nut-Free", Description = "No nuts", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType {DishTypeId = 17, Name = "Low-Carb", Description = "Low carbohydrate content", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new DishType {DishTypeId = 18, Name = "Keto-Friendly", Description = "Suitable for ketogenic diet", CreatedDate = DateTime.UtcNow, IsDeleted = false }
                 );
 
             modelBuilder.Entity<MealCourse>().HasData(
-                new MealCourse { MealCourseId = 1, MealType = "Appertizers/Starters", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new MealCourse { MealCourseId = 2, MealType = "Main Course", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new MealCourse { MealCourseId = 3, MealType = "Sides", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new MealCourse { MealCourseId = 4, MealType = "Desserts", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new MealCourse { MealCourseId = 5, MealType = "Sauces", CreatedDate = DateTime.UtcNow, IsDeleted = false },
-                new MealCourse { MealCourseId = 6, MealType = "Extras", CreatedDate = DateTime.UtcNow, IsDeleted = false }
+                new MealCourse { MealCourseId = 1, Name = "Appertizers/Starters", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new MealCourse { MealCourseId = 2, Name = "Main Course", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new MealCourse { MealCourseId = 3, Name = "Sides", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new MealCourse { MealCourseId = 4, Name = "Desserts", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new MealCourse { MealCourseId = 5, Name = "Sauces", CreatedDate = DateTime.UtcNow, IsDeleted = false },
+                new MealCourse { MealCourseId = 6, Name = "Extras", CreatedDate = DateTime.UtcNow, IsDeleted = false }
                 );
 
             modelBuilder.Entity<Status>().HasData(

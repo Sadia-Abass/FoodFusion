@@ -67,7 +67,7 @@ namespace FoodFusion.Server.Controllers
             var response = await _authenticationService.RefreshTokenAsync(refreshTokenDTO);
             if (!response.IsSuccess)
             {
-                return BadRequest(new {return Unauthorized(new { message = "Invalid email or password." });
+                return BadRequest(/*new { return Unauthorized(new { message = "Invalid email or password."}*/); 
             }
 
             return Ok(response);
