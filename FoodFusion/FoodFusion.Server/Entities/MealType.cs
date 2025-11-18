@@ -11,14 +11,11 @@ namespace FoodFusion.Server.Entities
         [Required]
         public long MealTypeId { get; set; }
         [StringLength(50)]
-        [Required(ErrorMessage = "Category name is required")]
+        [Required(ErrorMessage = "Meal type name is required")]
         public string Name { get; set; } = string.Empty;
-        //[Required]
-        //public long CuisineId { get; set; }
-        //[ForeignKey(nameof(CuisineId))]
-        //public Cuisine? Cuisine { get; set; }
-        // public ICollection<DishType>? DishType { get; set; }
-        public ICollection<MenuItem>? MenuItem { get; set; }
+        [MaxLength(500)]
+        public string Description { get; set; } = string.Empty;
+        public ICollection<MenuItem>? MenuItems { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
         public bool IsDeleted { get; set; }

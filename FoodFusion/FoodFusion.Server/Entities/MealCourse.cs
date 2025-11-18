@@ -11,8 +11,11 @@ namespace FoodFusion.Server.Entities
         public long MealCourseId { get; set; }
         [Required]
         [StringLength(50)]
-        public string MealType { get; set; } = string.Empty;
-        public ICollection<MenuItem> MenuItem { get; set; } = new List<MenuItem>();
+        public string Name{ get; set; } = string.Empty;
+        [MaxLength(500)]
+        public string Description { get; set; } = string.Empty;
+        public int DisplayOrder { get; set; }
+        public ICollection<MenuItem> MenuItems { get; set; } = new List<MenuItem>();
         public DateTime CreatedDate { get; set; }
         public DateTime LastModifiedDate { get; set; }
         public bool IsDeleted { get; set; }

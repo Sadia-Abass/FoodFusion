@@ -10,12 +10,13 @@ namespace FoodFusion.Server.Entities
         public long CuisineID { get; set; }
         [Required(ErrorMessage = "Cuisine type is required")]
         [StringLength(50)]
-        public string Type { get; set; } = string.Empty;  
-
-        public ICollection<MenuItem>? MenuItem { get; set; }
-        public ICollection<Restaurant> Restaurant { get; set; } = new List<Restaurant>();
-        //public ICollection<MealType> MealType { get; set; } = new List<MealType>();
-
+        public string Name { get; set; } = string.Empty;
+        [MaxLength(500)]
+        public string Description { get; set; } = string.Empty;
+        [MaxLength(100)]
+        public string Region {  get; set; } = string.Empty;
+        public ICollection<MenuItem>? MenuItems { get; set; }
+        public ICollection<Restaurant> Restaurants { get; set; } = new List<Restaurant>();
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public bool IsDeleted { get; set; }

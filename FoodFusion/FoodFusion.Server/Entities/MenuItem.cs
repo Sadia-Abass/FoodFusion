@@ -14,11 +14,22 @@ namespace FoodFusion.Server.Entities
         [StringLength(150)]
         public string Name { get; set; } = string.Empty;
 
+        [MaxLength(500)]
+        public string Description { get; set; } = string.Empty;
+
         [Required(ErrorMessage = "Enter a Price")]
         [Column(TypeName = "decimal(5, 2)")]
         public decimal Price { get; set; }
-      
 
+        public int Calories { get; set; }
+
+        public int PreparationTimeInMinutes { get; set; }
+
+        [MaxLength(500)]
+        public string Allergens { get; set; } = string.Empty;
+
+        public bool IsAvailable { get; set; } = true;
+      
         [Required]
         public long RestaurantId { get; set; }
         [ForeignKey(nameof(RestaurantId))]
@@ -40,15 +51,11 @@ namespace FoodFusion.Server.Entities
         public MealType? MealType { get; set; } 
 
         [Required]
-        public long DishTypeId { get; set; }
-        [ForeignKey(nameof(DishTypeId))]
-        public DishType? DishType { get; set; }  
-
-        [Required]
         public long MenuItemImageId { get; set; }
         [ForeignKey(nameof(MenuItemImageId))]
         public MenuItemImage? MenuItemImage { get; set; }
 
+        public ICollection<MenuItemDishType> MenuItemDishTypes { get; set; } = new List<MenuItemDishType>();
 
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
