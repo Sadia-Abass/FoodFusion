@@ -4,6 +4,8 @@ namespace FoodFusion.Server.DTOs.CuisineDTOs
 {
     public class UpdateCuisineDTO
     {
+        [Required]
+        public long CuisineID { get; set; }
         [StringLength(50)]
         public string Name { get; set; } = string.Empty;
         [MaxLength(500)]
