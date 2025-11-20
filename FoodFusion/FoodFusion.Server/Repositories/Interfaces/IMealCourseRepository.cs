@@ -5,7 +5,7 @@ namespace FoodFusion.Server.Repositories.Interfaces
 {
     public interface IMealCourseRepository
     {
-        Task<ApiResponse<MealCourseResponseDTO>> GetAllMealCourseAsync();
+        Task<ApiResponse<List<MealCourseResponseDTO>>> GetAllMealCourseAsync();
         Task<ApiResponse<MealCourseResponseDTO>> GetMealCourseByIdAsync(long id);
         Task<ApiResponse<MealCourseResponseDTO>> CreateMealCourseAsync(CreateMealCourseDTO createMealCourseDTO);
         Task<ApiResponse<ConfirmationResponseDTO>> DeleteMealCourseAsync(long id);

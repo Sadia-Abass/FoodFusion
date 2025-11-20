@@ -1,4 +1,5 @@
-﻿using FoodFusion.Server.Entities;
+﻿using FoodFusion.Server.DTOs.MenuItemDTOs;
+using FoodFusion.Server.Entities;
 using System.ComponentModel.DataAnnotations;
 
 namespace FoodFusion.Server.DTOs.MealCourseDTOs
@@ -9,6 +10,7 @@ namespace FoodFusion.Server.DTOs.MealCourseDTOs
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public int DisplayOrder { get; set; }
+        public bool IsDeleted { get; set; }
         public List<MenuItemResponseDTO>? MenuItems { get; set; }
     }
 }

@@ -6,6 +6,8 @@ namespace FoodFusion.Server.DTOs.MealCourseDTOs
     public class UpdateMealCourseDTO
     {
         [Required]
+        public long MealCourseId { get; set; }
+        [Required]
         [StringLength(50)]
         public string Name { get; set; } = string.Empty;
         [MaxLength(500)]

@@ -6,10 +6,13 @@ namespace FoodFusion.Server.DTOs.MealCourseDTOs
     public class CreateMealCourseDTO
     {
         [Required]
+        public long MealCourseId { get; set; }
+        [Required]
         [StringLength(50)]
         public string Name { get; set; } = string.Empty;
         [MaxLength(500)]
         public string Description { get; set; } = string.Empty;
         public int DisplayOrder { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }
