@@ -114,7 +114,7 @@ namespace FoodFusion.Server.Repositories.implementations
                     return new ApiResponse<ConfirmationResponseDTO>(404, "Cuisine not found.");
                 }
 
-                if(await _applicationDbContext.Cuisines.AnyAsync(c => c.Name.ToLower() == updateCuisineDTO.Name.ToLower() && c.CuisineID == updateCuisineDTO.CuisineID))
+                if(await _applicationDbContext.Cuisines.AnyAsync(c => c.Name.ToLower() == updateCuisineDTO.Name.ToLower() && c.CuisineID != updateCuisineDTO.CuisineID))
                 {
                     return new ApiResponse<ConfirmationResponseDTO>(400, "cuisine name already exists.");
                 }

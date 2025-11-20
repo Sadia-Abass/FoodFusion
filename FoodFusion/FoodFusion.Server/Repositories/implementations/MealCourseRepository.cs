@@ -143,7 +143,7 @@ namespace FoodFusion.Server.Repositories.implementations
                     return new ApiResponse<ConfirmationResponseDTO>(404, "MealCourse not found");
                 }
 
-                if(await _applicationDbContext.MealCourses.AnyAsync(mc => mc.Name.ToLower() == updateMealCourseDTO.Name.ToLower() && mc.MealCourseId == updateMealCourseDTO.MealCourseId))
+                if(await _applicationDbContext.MealCourses.AnyAsync(mc => mc.Name.ToLower() == updateMealCourseDTO.Name.ToLower() && mc.MealCourseId != updateMealCourseDTO.MealCourseId))
                 {
                     return new ApiResponse<ConfirmationResponseDTO>(400, "Another MealCourse with the same already exists.");
                 }

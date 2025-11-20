@@ -140,7 +140,7 @@ namespace FoodFusion.Server.Repositories.implementations
                     return new ApiResponse<ConfirmationResponseDTO>(404, "MealType not found.");
                 }
 
-                if(await _applicationDbContext.MealTypes.AnyAsync(m => m.Name.ToLower() == updateMealTypeDTO.Name.ToLower() && m.MealTypeId == updateMealTypeDTO.MealTypeId))
+                if(await _applicationDbContext.MealTypes.AnyAsync(m => m.Name.ToLower() == updateMealTypeDTO.Name.ToLower() && m.MealTypeId != updateMealTypeDTO.MealTypeId))
                 {
                     return new ApiResponse<ConfirmationResponseDTO>(400, "MealType name already exists.");
                 }

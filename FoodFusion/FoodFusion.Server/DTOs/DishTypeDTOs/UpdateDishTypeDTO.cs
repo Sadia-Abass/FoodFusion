@@ -6,6 +6,8 @@ namespace FoodFusion.Server.DTOs.DishTypeDTOs
     public class UpdateDishTypeDTO
     {
         [Required]
+        public long DishTypeId { get; set; }
+        [Required]
         [StringLength(50)]
         public string Name { get; set; } = string.Empty;
         [MaxLength(500)]
