@@ -21,7 +21,7 @@ namespace FoodFusion.Server.DTOs.RestaurantDTO
         public TimeSpan ClosingTime { get; set; }
         public int NumbersOfTables { get; set; }
         public string Logo { get; set; } = string.Empty;
-
+        public bool IsDeleted { get; set; }
         public List<CuisineResponseDTO>? Cuisine { get; set; }
         public List<MenuItemResponseDTO>? MenuItem { get; set; }
         public List<ReservationResponseDTO>? Reservation { get; set; }

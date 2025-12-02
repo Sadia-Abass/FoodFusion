@@ -1,9 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FoodFusion.Server.DTOs.RestaurantDTO
 {
     public class UpdateRestaurantDTO
     {
+        [Key]
+        public long RestaurantId { get; set; }
+
         [Required(ErrorMessage = "Restaurant name is required")]
         [StringLength(50)]
         public string Name { get; set; } = string.Empty;
@@ -39,5 +43,7 @@ namespace FoodFusion.Server.DTOs.RestaurantDTO
         public int NumbersOfTables { get; set; }
 
         public string Logo { get; set; } = string.Empty;
+        public DateTime LastUpdatedDate { get; set; }
+
     }
 }
