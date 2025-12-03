@@ -29,6 +29,7 @@ namespace FoodFusion.Server.Configurations
             services.AddScoped<ICuisineRepository, CuisineRepository>();
             services.AddScoped<IMealCourseRepository, MealCourseRepository>();
             services.AddScoped<IMealTypeRepository, MealTypeRepository>();
+            services.AddScoped<IRestaurantRepository, RestaurantRepository>();
 
             // Configure session options
             services.AddDistributedMemoryCache();
