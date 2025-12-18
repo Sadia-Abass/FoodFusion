@@ -1,6 +1,7 @@
 ﻿using FoodFusion.Server.DTOs;
 using FoodFusion.Server.DTOs.DishTypeDTOs;
 using FoodFusion.Server.Repositories.implementations;
+using FoodFusion.Server.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +11,9 @@ namespace FoodFusion.Server.Controllers
     [ApiController]
     public class DishTypeController : ControllerBase
     {
-        private readonly DishTypeRepository _dishTypeRepository;
+        private readonly IDishTypeRepository _dishTypeRepository;
 
-        public DishTypeController(DishTypeRepository dishTypeRepository)
+        public DishTypeController(IDishTypeRepository dishTypeRepository)
         {
             _dishTypeRepository = dishTypeRepository ?? throw new ArgumentNullException(nameof(dishTypeRepository));
         }

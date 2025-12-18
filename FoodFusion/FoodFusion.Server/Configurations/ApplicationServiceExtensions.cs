@@ -23,14 +23,7 @@ namespace FoodFusion.Server.Configurations
                 options.UseSqlServer(connectionString);
             });
 
-            //  Registering the Address Repository
-            services.AddScoped<IAddressRepository, AddressRepository>();
-            services.AddScoped<ICustomerRepository, CustomerRepository>();
-            services.AddScoped<ICuisineRepository, CuisineRepository>();
-            services.AddScoped<IMealCourseRepository, MealCourseRepository>();
-            services.AddScoped<IMealTypeRepository, MealTypeRepository>();
-            services.AddScoped<IRestaurantRepository, RestaurantRepository>();
-            services.AddScoped<IMenuItemRepository, MenuItemRepository>();
+  
 
             // Configure session options
             services.AddDistributedMemoryCache();
@@ -73,6 +66,16 @@ namespace FoodFusion.Server.Configurations
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IFileUploaderService, FileUploaderService>();
             services.Configure<CloudinarySettings>(configuration.GetSection("CloudinarySettings"));
+
+            //  Registering the Address Repository
+            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ICuisineRepository, CuisineRepository>();
+            services.AddScoped<IMealCourseRepository, MealCourseRepository>();
+            services.AddScoped<IMealTypeRepository, MealTypeRepository>();
+            services.AddScoped<IDishTypeRepository, DishTypeRepository>();
+            services.AddScoped<IRestaurantRepository, RestaurantRepository>();
+            services.AddScoped<IMenuItemRepository, MenuItemRepository>();
 
             services.AddAuthentication(options =>
             {

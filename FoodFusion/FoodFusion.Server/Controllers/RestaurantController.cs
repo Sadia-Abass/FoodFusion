@@ -1,6 +1,7 @@
 ﻿using FoodFusion.Server.DTOs;
 using FoodFusion.Server.DTOs.RestaurantDTO;
 using FoodFusion.Server.Repositories.implementations;
+using FoodFusion.Server.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +11,9 @@ namespace FoodFusion.Server.Controllers
     [ApiController]
     public class RestaurantController : ControllerBase
     {
-        private readonly RestaurantRepository _restaurantRepository;
+        private readonly IRestaurantRepository _restaurantRepository;
 
-        public RestaurantController(RestaurantRepository restaurantRepository)
+        public RestaurantController(IRestaurantRepository restaurantRepository)
         {
             _restaurantRepository = restaurantRepository ?? throw new ArgumentNullException(nameof(restaurantRepository));
         }

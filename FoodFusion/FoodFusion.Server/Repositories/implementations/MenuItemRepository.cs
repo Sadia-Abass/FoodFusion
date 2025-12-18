@@ -5,23 +5,24 @@ using FoodFusion.Server.DTOs.RestaurantDTO;
 using FoodFusion.Server.Entities;
 using FoodFusion.Server.Repositories.Interfaces;
 using FoodFusion.Server.Services.Impelementation;
+using FoodFusion.Server.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodFusion.Server.Repositories.implementations
 {
     public class MenuItemRepository : IMenuItemRepository
     {
-        private readonly CuisineRepository _cuisineRepository;
-        private readonly DishTypeRepository _dishTypeRepository;
-        private readonly MealCourseRepository _mealCourseRepository;
-        private readonly MealTypeRepository _mealTypeRepository;
-        private readonly RestaurantRepository _restaurantRepository;
-        private readonly FileUploaderService _fileUploaderService;
+        private readonly ICuisineRepository _cuisineRepository;
+        private readonly IDishTypeRepository _dishTypeRepository;
+        private readonly IMealCourseRepository _mealCourseRepository;
+        private readonly IMealTypeRepository _mealTypeRepository;
+        private readonly IRestaurantRepository _restaurantRepository;
+        private readonly IFileUploaderService _fileUploaderService;
         private readonly ApplicationDbContext _applicationDbContext;
         private int pageNumber = 1;
         private int pageSize = 20;
 
-        public MenuItemRepository(CuisineRepository cuisineRepository, DishTypeRepository dishTypeRepository, MealCourseRepository mealCourseRepository, MealTypeRepository mealTypeRepository, RestaurantRepository restaurantRepository, FileUploaderService fileUploaderService, ApplicationDbContext applicationDbContext)
+        public MenuItemRepository(ICuisineRepository cuisineRepository, IDishTypeRepository dishTypeRepository, IMealCourseRepository mealCourseRepository, IMealTypeRepository mealTypeRepository, IRestaurantRepository restaurantRepository, IFileUploaderService fileUploaderService, ApplicationDbContext applicationDbContext)
         {
             _cuisineRepository = cuisineRepository ?? throw new ArgumentNullException(nameof(cuisineRepository));
             _dishTypeRepository = dishTypeRepository ?? throw new ArgumentNullException(nameof(dishTypeRepository));

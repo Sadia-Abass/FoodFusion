@@ -4,6 +4,7 @@ using FoodFusion.Server.DTOs.RestaurantDTO;
 using FoodFusion.Server.Entities;
 using FoodFusion.Server.Repositories.Interfaces;
 using FoodFusion.Server.Services.Impelementation;
+using FoodFusion.Server.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodFusion.Server.Repositories.implementations
@@ -11,9 +12,9 @@ namespace FoodFusion.Server.Repositories.implementations
     public class RestaurantRepository : IRestaurantRepository
     {
         private readonly ApplicationDbContext _applicationDbContext;
-        private readonly FileUploaderService _fileUploaderService;
+        private readonly IFileUploaderService _fileUploaderService;
 
-        public RestaurantRepository(ApplicationDbContext applicationDbContext, FileUploaderService fileUploaderService)
+        public RestaurantRepository(ApplicationDbContext applicationDbContext, IFileUploaderService fileUploaderService)
         {
             _applicationDbContext = applicationDbContext ?? throw new ArgumentNullException(nameof(applicationDbContext));
             _fileUploaderService = fileUploaderService ?? throw new ArgumentNullException(nameof(fileUploaderService));

@@ -1,6 +1,7 @@
 ﻿using FoodFusion.Server.DTOs;
 using FoodFusion.Server.DTOs.MenuItemDTOs;
 using FoodFusion.Server.Repositories.implementations;
+using FoodFusion.Server.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +11,9 @@ namespace FoodFusion.Server.Controllers
     [ApiController]
     public class MenuItemController : ControllerBase
     {
-        private readonly MenuItemRepository _menuItemRepository;
+        private readonly IMenuItemRepository _menuItemRepository;
 
-        public MenuItemController(MenuItemRepository menuItemRepository)
+        public MenuItemController(IMenuItemRepository menuItemRepository)
         {
             _menuItemRepository = menuItemRepository;
         }
