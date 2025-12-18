@@ -3,10 +3,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FoodFusion.Server.DTOs.MenuItemImageDTOs
 {
-    public class MenuItemImageResponseDTO
+    public class UpdateMenuItemImageDTO
     {
+        [Required]
         public long MenuItemImageID { get; set; }
-        public string ImageUrl { get; set; } = string.Empty;
-        public MenuItem? MenuItem { get; set; }
+        [Required]
+        public IFormFile ImageUrl { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }
