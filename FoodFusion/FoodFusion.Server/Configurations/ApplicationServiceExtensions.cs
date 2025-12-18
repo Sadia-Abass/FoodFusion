@@ -30,6 +30,7 @@ namespace FoodFusion.Server.Configurations
             services.AddScoped<IMealCourseRepository, MealCourseRepository>();
             services.AddScoped<IMealTypeRepository, MealTypeRepository>();
             services.AddScoped<IRestaurantRepository, RestaurantRepository>();
+            services.AddScoped<IMenuItemRepository, MenuItemRepository>();
 
             // Configure session options
             services.AddDistributedMemoryCache();
@@ -70,6 +71,8 @@ namespace FoodFusion.Server.Configurations
 
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IFileUploaderService, FileUploaderService>();
+            services.Configure<CloudinarySettings>(configuration.GetSection("CloudinarySettings"));
 
             services.AddAuthentication(options =>
             {
