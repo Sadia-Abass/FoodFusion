@@ -80,6 +80,7 @@ namespace FoodFusion.Server.Repositories.implementations
             }
         }
 
+
         public async Task<ApiResponse<List<DishTypeResponseDTO>>> GetAllDishTypeAsync()
         {
             try
@@ -165,6 +166,13 @@ namespace FoodFusion.Server.Repositories.implementations
             {
                 return new ApiResponse<ConfirmationResponseDTO>(500, $"An unexpected error occurred while processing your request, Error: {ex.Message}");
             }
+        }
+
+
+        public async Task<bool> ExistsAsync(long id)
+        {
+            var result = await GetDishTypeByIDAsync(id);
+            return result != null;
         }
     }
 }
