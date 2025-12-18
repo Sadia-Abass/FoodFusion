@@ -39,6 +39,6 @@ namespace FoodFusion.Server.DTOs.RestaurantDTO
         [Required(ErrorMessage = "Numbers of available tables is required.")]
         public int NumbersOfTables { get; set; }
 
-        public string Logo { get; set; } = string.Empty;
+        public IFormFile? Logo { get; set; } 
     }
 }
