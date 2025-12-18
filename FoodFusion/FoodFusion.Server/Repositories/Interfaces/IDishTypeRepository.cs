@@ -10,5 +10,6 @@ namespace FoodFusion.Server.Repositories.Interfaces
         Task<ApiResponse<DishTypeResponseDTO>> CreateDishTypeAsync(CreateDishTypeDTO createDishTypeDTO);
         Task<ApiResponse<ConfirmationResponseDTO>> UpdateDishTypeAsync(UpdateDishTypeDTO updateDishTypeDTO);
         Task<ApiResponse<ConfirmationResponseDTO>> DeleteDishTypeAsync(long id);
+        Task<bool> ExistsAsync(long id);
     }
 }
