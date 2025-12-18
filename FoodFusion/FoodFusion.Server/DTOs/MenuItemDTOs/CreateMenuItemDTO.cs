@@ -24,6 +24,9 @@ namespace FoodFusion.Server.DTOs.MenuItemDTOs
         [MaxLength(500)]
         public string Allergens { get; set; } = string.Empty;
 
+        public IFormFile? ImageUrl { get; set; }
+        public bool IsAvailable { get; set; }
+
         [Required]
         public long RestaurantId { get; set; }
 

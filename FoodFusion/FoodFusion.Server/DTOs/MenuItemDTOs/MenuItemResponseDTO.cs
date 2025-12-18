@@ -19,6 +19,7 @@ namespace FoodFusion.Server.DTOs.MenuItemDTOs
         public int Calories { get; set; }
         public int PreparationTimeInMinutes { get; set; }
         public string Allergens { get; set; } = string.Empty;
+        public string ImageUrl { get; set; } = string.Empty;
         public bool IsAvailable { get; set; } = true;
 
         public RestaurantResponseDTO? Restaurant { get; set; }

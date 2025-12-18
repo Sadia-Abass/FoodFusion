@@ -5,6 +5,8 @@ namespace FoodFusion.Server.DTOs.MenuItemDTOs
 {
     public class UpdateMenuItemDTO
     {
+        public long MenuItemID { get; set; }
+
         [Required(ErrorMessage = "Enter menu item name")]
         [StringLength(150)]
         public string Name { get; set; } = string.Empty;
@@ -22,6 +24,8 @@ namespace FoodFusion.Server.DTOs.MenuItemDTOs
 
         [MaxLength(500)]
         public string Allergens { get; set; } = string.Empty;
+        public bool IsAvailable { get; set; }
+        public IFormFile ImageUrl { get; set; }
 
         [Required]
         public long RestaurantId { get; set; }

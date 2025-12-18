@@ -15,9 +15,10 @@ namespace FoodFusion.Server.DTOs.MenuItemDTOs
         public int PreparationTimeInMinutes { get; set; }
         public string Allergens { get; set; } = string.Empty;
         public bool IsAvailable { get; set; } = true;
+        public string ImageUrl { get; set; } = string.Empty;
         public string CuisineName {  get; set; } = string.Empty;
         public string MealCourseName {  get; set; } = string.Empty;
-
+        public string MealTypeName {  get; set; } = string.Empty;
         public List<string>? DishTypeNames { get; set; }
         public MenuItemImageResponseDTO? MenuItemImage { get; set; }
     }
