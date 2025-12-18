@@ -27,6 +27,8 @@ namespace FoodFusion.Server.Entities
 
         [MaxLength(500)]
         public string Allergens { get; set; } = string.Empty;
+        [Required]
+        public string ImageUrl { get; set; } = string.Empty;
 
         public bool IsAvailable { get; set; } = true;
       
