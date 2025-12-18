@@ -3,6 +3,7 @@ using FoodFusion.Server.DTOs;
 using FoodFusion.Server.DTOs.RestaurantDTO;
 using FoodFusion.Server.Entities;
 using FoodFusion.Server.Repositories.Interfaces;
+using FoodFusion.Server.Services.Impelementation;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodFusion.Server.Repositories.implementations
@@ -10,10 +11,12 @@ namespace FoodFusion.Server.Repositories.implementations
     public class RestaurantRepository : IRestaurantRepository
     {
         private readonly ApplicationDbContext _applicationDbContext;
+        private readonly FileUploaderService _fileUploaderService;
 
-        public RestaurantRepository(ApplicationDbContext applicationDbContext)
+        public RestaurantRepository(ApplicationDbContext applicationDbContext, FileUploaderService fileUploaderService)
         {
             _applicationDbContext = applicationDbContext ?? throw new ArgumentNullException(nameof(applicationDbContext));
+            _fileUploaderService = fileUploaderService ?? throw new ArgumentNullException(nameof(fileUploaderService));
         }
 
         public async Task<ApiResponse<List<RestaurantResponseDTO>>> GetAllRestarantAsync()
@@ -90,6 +93,8 @@ namespace FoodFusion.Server.Repositories.implementations
                     return new ApiResponse<RestaurantResponseDTO>(404, "Restaurant name already exists.");
                 }
 
+                var logoToUpload = await _fileUploaderService.AddFileAsync(createRestaurantDTO.Logo);
+
                 var restaurant = new Restaurant
                 {
                     Name = createRestaurantDTO.Name,
@@ -102,7 +107,7 @@ namespace FoodFusion.Server.Repositories.implementations
                     OpeningTime = createRestaurantDTO.OpeningTime,
                     ClosingTime = createRestaurantDTO.ClosingTime,
                     NumbersOfTables = createRestaurantDTO.NumbersOfTables,
-                    Logo = createRestaurantDTO.Logo,
+                    Logo = logoToUpload.SecureUrl.ToString(),
                     CreatedDate = DateTime.UtcNow
                 };
 
@@ -149,6 +154,15 @@ namespace FoodFusion.Server.Repositories.implementations
                     return new ApiResponse<ConfirmationResponseDTO>(400, "Restaurant name already exists.");
                 }
 
+                string logoUrlInsideDto = updateRestaurantDTO.Logo.ToString();
+
+                if (!string.IsNullOrEmpty(logoUrlInsideDto) && !string.IsNullOrEmpty(restaurant.Logo) && restaurant.Logo != logoUrlInsideDto) 
+                {
+                    await _fileUploaderService.DeleteFileAsync(restaurant.Logo);
+                }
+
+                var newLogoToUpload = await _fileUploaderService.AddFileAsync(updateRestaurantDTO.Logo);
+
                 restaurant.Name = updateRestaurantDTO.Name;
                 restaurant.AddressLineOne = updateRestaurantDTO.AddressLineOne;
                 restaurant.AddressLineTwo = updateRestaurantDTO.AddressLineTwo;
@@ -159,7 +173,7 @@ namespace FoodFusion.Server.Repositories.implementations
                 restaurant.OpeningTime = updateRestaurantDTO.OpeningTime;
                 restaurant.ClosingTime = updateRestaurantDTO.ClosingTime;
                 restaurant.NumbersOfTables = updateRestaurantDTO.NumbersOfTables;
-                restaurant.Logo = updateRestaurantDTO.Logo;
+                restaurant.Logo = newLogoToUpload.SecureUrl.ToString();
                 restaurant.LastUpdatedDate = updateRestaurantDTO.LastUpdatedDate;
 
                 await _applicationDbContext.SaveChangesAsync();
