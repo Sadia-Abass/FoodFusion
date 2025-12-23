@@ -76,6 +76,11 @@ export const NavBar = () => {
                 </NavLink>
               </li>
               <li className="nav-item px-3 px-lg-0 py-1 py-lg-4">
+                <NavLink className="nav-link" to="/profile">
+                  Profile
+                </NavLink>
+              </li>
+              <li className="nav-item px-3 px-lg-0 py-1 py-lg-4">
                 <NavLink className="nav-link" to="/login">
                   Login
                 </NavLink>

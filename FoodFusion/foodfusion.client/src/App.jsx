@@ -4,12 +4,12 @@ import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { NavBar } from "./components/Navigations/NavBar";
 import { Sidebar } from "./components/Navigations/Sidebar";
-import { Home } from "./pages/Home";
-import { Collection } from "./pages/Collection";
-import { Delivery } from "./pages/Delivery";
-import { Reservation } from "./pages/Reservation";
-import { Register } from "./pages/Authentication/Register";
-import { Login } from "./pages/Authentication/Login";
+import { Home } from "./components/pages/Home";
+import { Collection } from "./components/pages/Collection";
+import { Delivery } from "./components/pages/Delivery";
+import { Reservation } from "./components/pages/Reservation";
+import { Register } from "./components/pages/Authentication/Register";
+import { Login } from "./components/pages/Authentication/Login";
 
 function App() {
   const [forecasts, setForecasts] = useState();
@@ -73,6 +73,7 @@ function App() {
                 <Route path="/reservation" element={<Reservation />}></Route>
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/register" element={<Register />}></Route>
+                <Route path="/profile" element={<Profile />}></Route>
               </Routes>
 
               <h1 id="tableLabel">Weather forecast</h1>
