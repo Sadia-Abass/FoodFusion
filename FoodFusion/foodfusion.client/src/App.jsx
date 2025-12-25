@@ -10,6 +10,8 @@ import { Delivery } from "./components/pages/Delivery";
 import { Reservation } from "./components/pages/Reservation";
 import { Register } from "./components/pages/Authentication/Register";
 import { Login } from "./components/pages/Authentication/Login";
+import { AuthenticationProvider } from "./context/AuthenticationContext";
+import { RequiredAuth } from "./components/pages/Authentication/RequiredAuth";
 
 function App() {
   const [forecasts, setForecasts] = useState();
@@ -54,35 +56,46 @@ function App() {
 
   return (
     <div className="">
-      <BrowserRouter>
-        <header>
-          <NavBar />
-        </header>
-        <div className="container-fuild min-vh-100">
-          <div className="d-flex row">
-            <div className="col-2">
-              <Sidebar />
-            </div>
-            <div className="col-10">
-              <Routes>
-                <Route path="/" element={<Home />}></Route>
-                {/* <Route path="/navbar" element={<NavBar />}></Route>*/}
-                {/* <Route path="/sidebar" element={<Sidebar />}></Route> */}
-                <Route path="/delivery" element={<Delivery />}></Route>
-                <Route path="/collection" element={<Collection />}></Route>
-                <Route path="/reservation" element={<Reservation />}></Route>
-                <Route path="/login" element={<Login />}></Route>
-                <Route path="/register" element={<Register />}></Route>
-                <Route path="/profile" element={<Profile />}></Route>
-              </Routes>
+      <AuthenticationProvider>
+        <BrowserRouter>
+          <header>
+            <NavBar />
+          </header>
+          <div className="container-fuild min-vh-100">
+            <div className="d-flex row">
+              <div className="col-2">
+                <Sidebar />
+              </div>
+              <div className="col-10">
+                <Routes>
+                  <Route path="/" element={<Home />}></Route>
+                  {/* <Route path="/navbar" element={<NavBar />}></Route>*/}
+                  {/* <Route path="/sidebar" element={<Sidebar />}></Route> */}
+                  <Route path="/delivery" element={<Delivery />}></Route>
+                  <Route path="/collection" element={<Collection />}></Route>
+                  <Route path="/reservation" element={<Reservation />}></Route>
+                  <Route path="/login" element={<Login />}></Route>
+                  <Route path="/register" element={<Register />}></Route>
+                  <Route
+                    path="/profile"
+                    element={
+                      <RequiredAuth>
+                        <Profile />
+                      </RequiredAuth>
+                    }
+                  ></Route>
+                </Routes>
 
-              <h1 id="tableLabel">Weather forecast</h1>
-              <p>This component demonstrates fetching data from the server.</p>
-              {contents}
+                <h1 id="tableLabel">Weather forecast</h1>
+                <p>
+                  This component demonstrates fetching data from the server.
+                </p>
+                {contents}
+              </div>
             </div>
           </div>
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </AuthenticationProvider>
     </div>
   );
 

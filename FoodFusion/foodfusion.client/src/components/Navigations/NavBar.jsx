@@ -4,6 +4,7 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import "./NavBar.css";
 
 export const NavBar = () => {
+  const auth = useAuth();
   return (
     <div>
       <nav
@@ -81,9 +82,11 @@ export const NavBar = () => {
                 </NavLink>
               </li>
               <li className="nav-item px-3 px-lg-0 py-1 py-lg-4">
-                <NavLink className="nav-link" to="/login">
-                  Login
-                </NavLink>
+                {!auth.user && (
+                  <NavLink className="nav-link" to="/login">
+                    Login
+                  </NavLink>
+                )}
               </li>
               <li className="nav-item px-3 px-lg-0 py-1 py-lg-4 ">
                 <NavLink className="nav-link" to="/register">
