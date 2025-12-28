@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { TiThMenuOutline } from "react-icons/ti";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import "./NavBar.css";
+import { useAuth } from "./../../context/AuthenticationContext.jsx";
 
 export const NavBar = () => {
   const auth = useAuth();

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { NavBar } from "./components/Navigations/NavBar";
+//import { NavBar } from "./components/Navigations/NavBar";
 import { Sidebar } from "./components/Navigations/Sidebar";
 import { Home } from "./components/pages/Home";
 import { Collection } from "./components/pages/Collection";
@@ -11,7 +11,10 @@ import { Reservation } from "./components/pages/Reservation";
 import { Register } from "./components/pages/Authentication/Register";
 import { Login } from "./components/pages/Authentication/Login";
 import { AuthenticationProvider } from "./context/AuthenticationContext";
-import { RequiredAuth } from "./components/pages/Authentication/RequiredAuth";
+import { RequiredAuth } from "./components/pages/Authentication/RequiredAuth.jsx";
+import  Button from "./components/shared/Button.jsx";
+import { Profile } from "./components/pages/Profile/Profile.jsx";
+import { Card } from "./components/shared/Card.jsx";
 
 function App() {
   const [forecasts, setForecasts] = useState();
@@ -59,7 +62,7 @@ function App() {
       <AuthenticationProvider>
         <BrowserRouter>
           <header>
-            <NavBar />
+       {/*     <NavBar />*/}
           </header>
           <div className="container-fuild min-vh-100">
             <div className="d-flex row">
@@ -84,8 +87,9 @@ function App() {
                       </RequiredAuth>
                     }
                   ></Route>
-                </Routes>
-
+                   </Routes>
+                              <Button className="btn btn-success" buttonName="Submit" />
+                              <Card linkClassName="btn btn-primary" cardText="This is card text." cardTitle="Food" buttonUrl="/" name="Add" width="25rem" />
                 <h1 id="tableLabel">Weather forecast</h1>
                 <p>
                   This component demonstrates fetching data from the server.
